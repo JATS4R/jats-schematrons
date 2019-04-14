@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2015 JATS4Reuse (https://jats4r.org)
+    Copyright (c) 2019 JATS4Reuse (https://jats4r.org)
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -31,9 +31,14 @@
       ERROR: When &lt;data-title> element is present, the @citation-type must be set to "data". 
     </report>
     <report test="@publication-type='data' and 
-      ((not(source) and not(data-title)) or (article-title and not(data-title)))">
+      (not(source) and not(data-title))">
       <j4r:meta rec="rec3" test-file="data-citations.xml"/> 
       ERROR: &lt;data-title> and/or &lt;source> must be present in data citations. 
+    </report>
+    <report test="@publication-type='data' and 
+      (article-title and not(data-title))">
+      <j4r:meta rec="rec3" test-file="data-citations.xml"/> 
+      ERROR: &lt;data-title> must be used in data citations, not &lt;article-title>.
     </report>
   </rule>
 

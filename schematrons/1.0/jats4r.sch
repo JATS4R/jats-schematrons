@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2015 JATS4Reuse (https://jats4r.org)
+    Copyright (c) 2019 JATS4Reuse (https://jats4r.org)
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -33,10 +33,13 @@
   <ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
 
   <include href="permissions-errors.sch"/>
+  <include href="permissions-warnings.sch"/>
   <include href="math-errors.sch"/>
+  <include href="math-warnings.sch"/>
   <include href="data-citations-errors.sch"/>
+  <include href="data-citations-warnings.sch"/>
   
-  <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
+ <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
     <xsl:param name="v"/>
     <xsl:variable name='maj' select="substring-before($v, '.')"/>
     <xsl:variable name='min' select="substring-after($v, '.')"/>

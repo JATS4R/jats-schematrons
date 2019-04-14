@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2015 JATS4Reuse (https://jats4r.org)
+    Copyright (c) 2019 JATS4Reuse (https://jats4r.org)
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,7 @@
       or <mml:math>.
     -->
     <report test="(graphic or inline-graphic) and not(mml:math or tex-math)"> 
-      WARNING: All
-      mathematical expressions should be provided in markup using either &lt;mml:math&gt; or
+      WARNING: All mathematical expressions should be provided in markup using either &lt;mml:math&gt; or
       &lt;tex-math&gt;. The only instance in which the graphic representation of a mathematical
       expression should be used outside of &lt;alternatives> and without the equivalent markup is
       where that expression is so complicated that it cannot be represented in markup at all.
