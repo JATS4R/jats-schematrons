@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2015 JATS4Reuse (https://jats4r.org)
+    Copyright (c) 2019 JATS4Reuse (https://jats4r.org)
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
     <assert test="permissions">
       <j4r:meta rec='rec1' test-file='permissions-none.xml'/>
       ERROR: Missing top-level &lt;permissions> element. JATS4R-compliant articles must include
-      a &lt;permissions> element within &lt;article-meta>.
+      a &lt;permissions> element within &lt;article-meta>.. (See https://jats4r.org/permissions, Recommendation 1.)
     </assert>
   </rule>
 
@@ -38,18 +38,15 @@
       <copyright-year> -->
     <report test="(copyright-statement|copyright-holder) and not(copyright-year)"> 
       <j4r:meta rec='rec3' test-file='permissions-1.xml'/>
-      ERROR: Missing &lt;copyright-year>.
-      When an article is under copyright
-      (i.e. it is not in the public domain) we recommend that &lt;copyright-year> be given.
+      ERROR: Missing &lt;copyright-year>. When an article is under copyright (i.e. it is not in the public domain) a &lt;copyright-year> must be given. (See https://jats4r.org/permissions, Recommendation 3.)
     </report>
 
     <!-- Likewise, <copyright-statement> or <copyright-year> implies there must also be a
       <copyright-holder> -->
     <report test="(copyright-statement|copyright-year) and not(copyright-holder)"> 
       <j4r:meta rec='rec4' test-file='permissions-1.xml'/>
-      ERROR: Missing &lt;copyright-holder>.
-      When an article is under copyright
-      (i.e. it is not in the public domain) we recommend that &lt;copyright-holder> be given.
+      ERROR: Missing &lt;copyright-holder>. When an article is under copyright
+      (i.e. it is not in the public domain) a &lt;copyright-holder> must be given.
     </report>
   </rule>
 

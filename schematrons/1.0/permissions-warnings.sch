@@ -32,7 +32,7 @@
       <j4r:meta rec='rec5' test-file='permissions-2.xml'/>
       WARNING: Whenever the @xlink:href attribute appears on the &lt;license> element, its
       value must be the canonical URI of a valid license (such as a Creative Commons
-      license). In this article, the attribute appears to be empty.
+      license). In this article, the attribute is empty.
     </report>
 
     <!-- Same for ali:license_ref -->
@@ -40,12 +40,12 @@
       <j4r:meta rec='rec5' test-file='permissions-2.xml'/>
       WARNING: Whenever the ali:license_ref element appears, its
       content must be the canonical URI of a valid license (such as a Creative Commons
-      license). In this article, the attribute appears to be empty.
+      license). In this article, the element is empty.
     </report>
     
 
     <!-- For JATS 1.1d3 and later, <license> should have an <ali:license_ref> -->
-  <!--  <report test="j4r:jats-version-later-1d2(/article/@dtd-version) and 
+   <!-- <report test="j4r:jats-version-later-1d2(/article/@dtd-version) and 
                   not(@xlink:href) and not(ali:license_ref)">
       <j4r:meta rec='rec5' test-file='permissions-2.xml'/>
       WARNING: No licence URI.
