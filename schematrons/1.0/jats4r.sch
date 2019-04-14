@@ -39,7 +39,7 @@
   <include href="data-citations-errors.sch"/>
   <include href="data-citations-warnings.sch"/>
   
- <!-- <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
+ <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
     <xsl:param name="v"/>
     <xsl:variable name='maj' select="substring-before($v, '.')"/>
     <xsl:variable name='min' select="substring-after($v, '.')"/>
@@ -49,7 +49,7 @@
       ( $min-is-num and number($min) >= 1 or
         not($min-is-num) and $min > '1d2' )
     "/>
-  </xsl:function>-->
+  </xsl:function>
   
   
 </schema>
