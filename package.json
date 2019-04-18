@@ -4,5 +4,8 @@
   "files": [
     "schematrons"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT"
 }
