@@ -4,8 +4,11 @@
   "files": [
     "schematrons"
   ],
+  "main": "schematrons/1.0/jats4r.sch",
   "publishConfig": {
     "access": "public"
   },
-  "license": "MIT"
+  "scripts": {
+    "build": "echo 'The schematrons are ready.'"
+  }
 }
