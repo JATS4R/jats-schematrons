@@ -50,7 +50,7 @@
       that URI.
     </report>
     <report test="j4r:jats-version-later-1d2(/article/@dtd-version) and 
-                  @xlink:href and not(ali:license_ref)">
+      @xlink:href and not(child::node()[local-name()='license_ref'])">
       WARNING: The license URI is given in @xlink:href.
       For JATS 1.1d3 and later, if the licence is defined by a canonical URI, then it
       should be specified in the &lt;ali:license_ref> child element.
