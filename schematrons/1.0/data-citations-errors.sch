@@ -37,6 +37,11 @@
       (article-title and not(data-title))">
       ERROR: &lt;data-title> must be used in data citations, not &lt;article-title>.
     </report>
+    
+      <report test="@citation-type">
+        ERROR: Use @publication-type (and @publication-format and @publisher-type) rather than @citation-type.
+      </report>
+    
   </rule>
 
   <rule context="year[ancestor::mixed-citation or ancestor::element-citation]">
@@ -52,4 +57,21 @@
     </assert>
   </rule>
 
+<!-- The following are generla citaiton errors -->
+  <rule context="ref">
+    <report test="nlm-citation">
+      ERROR: &lt;nlm-citaiton> has been deprecsted. Use &lt;element-citation>.
+    </report>
+    <report test="citation">
+      ERROR: Use &lt;mixed-citation> rather than &lt;citation>.
+    </report>
+    <report test="not(@id)">
+      ERROR: Each &lt;ref> must have an @id.
+    </report>
+  </rule>
+
+
+
 </pattern>
+
+

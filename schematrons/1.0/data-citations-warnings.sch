@@ -25,4 +25,10 @@
          xmlns="http://purl.oclc.org/dsdl/schematron"
          xmlns:j4r="http://jats4r.org/ns">
 
+<rule context="mixed-citation | element-citation">
+    <report test="@publication-type='other'">
+        WARNING: Avoid using 'other' as a publication-type value.
+    </report>
+</rule>
+
 </pattern>
