@@ -37,6 +37,8 @@
   <include href="auths-affs-warnings.sch"/>
   <include href="coi-errors.sch"/>
   <include href="coi-warnings.sch"/>
+  <include href="data-availability-errors.sch"/>
+  <include href="data-availability-warnings.sch"/>
   <include href="data-citations-errors.sch"/>
   <include href="data-citations-warnings.sch"/>
   <include href="math-errors.sch"/>
@@ -87,6 +89,28 @@
       $testtitle='COMPETING INTERESS' or
       $testtitle='COMPETING INTERESTS' or
       $testtitle='CONFLICTS'"/>
+  </xsl:function>
+  
+  <xsl:function name="j4r:data-avail-type" as="xsd:boolean">
+    <xsl:param name="type"/>
+    <xsl:value-of select="
+      $type='data availability' or
+      $type='Data availability' or
+      $type='Data Availability' or 
+      $type='Data-Availability' or 
+      $type='data availability statement' or 
+      $type='Data availability statement' or 
+      $type='Data Availability Statement' or 
+      $type='data-availability-statement' or
+      $type='Data-availability-statement' or
+      $type='Data-Availability-Statement' or 
+      $type='Data_Availability' or 
+      $type='data_availability-statement' or 
+      $type='Data_availability-statement' or
+      $type='Data_Availability-Statement' or 
+      $type='data_availability' or
+      $type='Data Accessibility' or
+      $type='Data accessibility'"/>
   </xsl:function>
   
 </schema>
