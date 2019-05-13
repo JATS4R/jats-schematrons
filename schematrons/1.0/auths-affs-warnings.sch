@@ -21,13 +21,13 @@
     SOFTWARE.
     -->
 
-<pattern id="data-citations-warnings" 
+<pattern id="auths-aff-warnings" 
          xmlns="http://purl.oclc.org/dsdl/schematron"
          xmlns:j4r="http://jats4r.org/ns">
 
-<rule context="mixed-citation | element-citation">
-    <report test="@publication-type='other'">
-        WARNING: Avoid using 'other' as a publication-type value.
+<rule context="/article/front/article-meta[descendant::contrib]">
+    <report test="not(descendant::contrib[@contrib-type='author'])">
+        WARNING: Articles should have authors included as &lt;contrib contrib-type="author".
     </report>
 </rule>
 

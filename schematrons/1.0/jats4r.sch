@@ -38,6 +38,8 @@
   <include href="math-warnings.sch"/>
   <include href="data-citations-errors.sch"/>
   <include href="data-citations-warnings.sch"/>
+  <include href="auths-affs-errors.sch"/>
+  <include href="auths-affs-warnings.sch"/>
   
  <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
     <xsl:param name="v"/>
