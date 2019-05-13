@@ -32,14 +32,17 @@
   <ns prefix="xsi" uri="http://www.w3.org/2001/XMLSchema-instance"/>
   <ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
 
-  <include href="permissions-errors.sch"/>
-  <include href="permissions-warnings.sch"/>
-  <include href="math-errors.sch"/>
-  <include href="math-warnings.sch"/>
-  <include href="data-citations-errors.sch"/>
-  <include href="data-citations-warnings.sch"/>
+
   <include href="auths-affs-errors.sch"/>
   <include href="auths-affs-warnings.sch"/>
+  <include href="coi-errors.sch"/>
+  <include href="coi-warnings.sch"/>
+  <include href="data-citations-errors.sch"/>
+  <include href="data-citations-warnings.sch"/>
+  <include href="math-errors.sch"/>
+  <include href="math-warnings.sch"/>
+  <include href="permissions-errors.sch"/>
+  <include href="permissions-warnings.sch"/>
   
  <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
     <xsl:param name="v"/>
@@ -53,5 +56,37 @@
     "/>
   </xsl:function>
   
+  <xsl:function name="j4r:coi-type" as="xsd:boolean">
+    <xsl:param name="type"/>
+    <xsl:value-of select="
+      $type='COI_statement' or
+      $type='coi-statement' or
+      $type='coi_statement' or
+      $type='conflict-statement' or
+      $type='conflict_statement' or
+      $type='conflict-of-interests' or
+      $type='conflict_of_interests' or
+      $type='conflict-of-interest' or
+      $type='conflict_of_interest' or
+      $type='competing-interests' or
+      $type='competing_interests' or
+      $type='competing-interest' or
+      $type='competing_interess' or
+      $type='conflict'"/>
+  </xsl:function>
+  
+  <xsl:function name="j4r:coi-title" as="xsd:boolean">
+    <xsl:param name="title"/>
+    <xsl:variable name="testtitle" select="upper-case($title)"/>
+    <xsl:value-of select="
+      $testtitle='CONFLICT OF INTEREST' or
+      $testtitle='CONFLICTS OF INTEREST' or
+      $testtitle='CONFLICT OF INTEREST STATEMENT' or
+      $testtitle='CONFLICT OF INTEREST STATEMENTS' or
+      $testtitle='AUTHOR CONFLICTS' or
+      $testtitle='COMPETING INTERESS' or
+      $testtitle='COMPETING INTERESTS' or
+      $testtitle='CONFLICTS'"/>
+  </xsl:function>
   
 </schema>
