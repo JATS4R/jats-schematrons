@@ -49,7 +49,7 @@
 
   <rule context="copyright-year">
     <assert test="number() and number() > 999 and number() &lt; 10000"> 
-      &lt;copyright-year&gt; must be a 4-digit year, not "<value-of select="."/>". 
+      &lt;copyright-year&gt; must be a 4-digit year, not "<value-of select="normalize-space()"/>". 
     </assert>
     <report test="normalize-space(string(.)) != string(.)"> 
       &lt;copyright-year&gt; should not contain whitespace. 

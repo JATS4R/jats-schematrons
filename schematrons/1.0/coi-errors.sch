@@ -25,12 +25,19 @@
          xmlns="http://purl.oclc.org/dsdl/schematron"
          xmlns:j4r="http://jats4r.org/ns">
 
+  
+  
   <rule context="fn[@fn-type='COI-statement']">
     <assert test="parent::author-notes">
       Conflict of Interest Statements shoud be tagged as &lt;fn fn-type="COI-statement" in the &lt;author-notes>.
     </assert>  
   </rule>
  
+  <rule context="fn[@id and @fn-type='COI-statement']">
+    <report test="p">
+      999OOOOOOOOOO
+    </report>
+  </rule>
   
   <rule context="fn">
     <report test="@content-type='COI-statement' or j4r:coi-type(@content-type) or j4r:coi-type(@fn-type)">
