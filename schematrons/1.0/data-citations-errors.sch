@@ -27,46 +27,46 @@
 
   <rule context="mixed-citation | element-citation">
     <report test="data-title and not(@publication-type='data')">
-       ERROR: When &lt;data-title> element is present, the @citation-type must be set to "data". 
+       When &lt;data-title> element is present, the @citation-type must be set to "data". 
     </report>
     <report test="@publication-type='data' and 
       (not(source) and not(data-title))">
-      ERROR: &lt;data-title> and/or &lt;source> must be present in data citations. 
+      &lt;data-title> and/or &lt;source> must be present in data citations. 
     </report>
     <report test="@publication-type='data' and 
       (article-title and not(data-title))">
-      ERROR: &lt;data-title> must be used in data citations, not &lt;article-title>.
+      &lt;data-title> must be used in data citations, not &lt;article-title>.
     </report>
     
       <report test="@citation-type">
-        ERROR: Use @publication-type (and @publication-format and @publisher-type) rather than @citation-type.
+        Use @publication-type (and @publication-format and @publisher-type) rather than @citation-type.
       </report>
     
   </rule>
 
   <rule context="year[ancestor::mixed-citation or ancestor::element-citation]">
     <assert test="matches(.,'^([1][4-9]|[2][0])[0-9][0-9]$')">
-      ERROR: &lt;year> in a citation must be a valid 4-digit year. "<value-of select="."/>" 
+      &lt;year> in a citation must be a valid 4-digit year. "<value-of select="."/>" 
       was supplied 
     </assert>
   </rule>
 
   <rule context="version">
     <assert test="normalize-space(@designator)">
-      ERROR: &lt;version> must include a machine-readable version number in the @designator. 
+      &lt;version> must include a machine-readable version number in the @designator. 
     </assert>
   </rule>
 
 <!-- The following are generla citaiton errors -->
   <rule context="ref">
     <report test="nlm-citation">
-      ERROR: &lt;nlm-citaiton> has been deprecsted. Use &lt;element-citation>.
+      &lt;nlm-citaiton> has been deprecsted. Use &lt;element-citation>.
     </report>
     <report test="citation">
-      ERROR: Use &lt;mixed-citation> rather than &lt;citation>.
+      Use &lt;mixed-citation> rather than &lt;citation>.
     </report>
     <report test="not(@id)">
-      ERROR: Each &lt;ref> must have an @id.
+      Each &lt;ref> must have an @id.
     </report>
   </rule>
 

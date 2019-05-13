@@ -31,7 +31,7 @@
       or <mml:math>.
     -->
     <report test="(graphic or inline-graphic) and not(mml:math or tex-math)"> 
-      WARNING: All mathematical expressions should be provided in markup using either &lt;mml:math&gt; or
+      All mathematical expressions should be provided in markup using either &lt;mml:math&gt; or
       &lt;tex-math&gt;. The only instance in which the graphic representation of a mathematical
       expression should be used outside of &lt;alternatives> and without the equivalent markup is
       where that expression is so complicated that it cannot be represented in markup at all.

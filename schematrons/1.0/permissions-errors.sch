@@ -27,7 +27,7 @@
   
   <rule context="article-meta">
     <assert test="permissions">
-      ERROR: Missing top-level &lt;permissions> element. JATS4R-compliant articles must include
+      Missing top-level &lt;permissions> element. JATS4R-compliant articles must include
       a &lt;permissions> element within &lt;article-meta>.. (See https://jats4r.org/permissions, Recommendation 1.)
     </assert>
   </rule>
@@ -36,23 +36,23 @@
     <!-- <copyright-statement> or <copyright-holder> implies copyright; so there must also be a
       <copyright-year> -->
     <report test="(copyright-statement|copyright-holder) and not(copyright-year)"> 
-      ERROR: Missing &lt;copyright-year>. When an article is under copyright (i.e. it is not in the public domain) a &lt;copyright-year> must be given. (See https://jats4r.org/permissions, Recommendation 3.)
+      Missing &lt;copyright-year>. When an article is under copyright (i.e. it is not in the public domain) a &lt;copyright-year> must be given. (See https://jats4r.org/permissions, Recommendation 3.)
     </report>
 
     <!-- Likewise, <copyright-statement> or <copyright-year> implies there must also be a
       <copyright-holder> -->
     <report test="(copyright-statement|copyright-year) and not(copyright-holder)"> 
-      ERROR: Missing &lt;copyright-holder>. When an article is under copyright
+      Missing &lt;copyright-holder>. When an article is under copyright
       (i.e. it is not in the public domain) a &lt;copyright-holder> must be given.
     </report>
   </rule>
 
   <rule context="copyright-year">
     <assert test="number() and number() > 999 and number() &lt; 10000"> 
-      ERROR: &lt;copyright-year&gt; must be a 4-digit year, not "<value-of select="."/>". 
+      &lt;copyright-year&gt; must be a 4-digit year, not "<value-of select="."/>". 
     </assert>
     <report test="normalize-space(string(.)) != string(.)"> 
-      ERROR: &lt;copyright-year&gt; should not contain whitespace. 
+      &lt;copyright-year&gt; should not contain whitespace. 
     </report>
   </rule>
   
@@ -60,7 +60,7 @@
     <!-- if both @xlink:href and ali:license_ref are used, they must match exactly -->
     <report test="@xlink:href and ali:license_ref and
                   string(@xlink:href) != string(ali:license_ref)">
-      ERROR: If both @xlink:href and &lt;ali:license_ref> are used to specify the licence
+      If both @xlink:href and &lt;ali:license_ref> are used to specify the licence
       URI of an article, their contents must match exactly.
     </report>
   </rule>

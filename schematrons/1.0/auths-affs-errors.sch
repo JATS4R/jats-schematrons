@@ -27,39 +27,39 @@
 
 <rule context="aff">
   <report test="parent::article-meta and following-sibling::aff and count(preceding::contrib) > 1 and ((@id and not(idref(@id)) or not(@id)))">
-    ERROR: When there is more than one author and more than one affiliation, there mut be a relationship between them either by position of the &lt;aff> in the &lt;contrib-group> or with &lt;xref ref-type="aff"  in the &lt;contrib> pointing to the @id on the &lt;aff>.
+    When there is more than one author and more than one affiliation, there mut be a relationship between them either by position of the &lt;aff> in the &lt;contrib-group> or with &lt;xref ref-type="aff"  in the &lt;contrib> pointing to the @id on the &lt;aff>.
   </report>
   
   <report test="parent::contrib-group and following-sibling::aff and count(preceding-sibling::contrib) > 1 and ((@id and not(idref(@id)) or not(@id)))">
-    ERROR: When there is more than one author and more than one affiliation in a &lt;contrib-group>, there mut be a relationship between them  defined by an &lt;xref ref-type="aff" in the &lt;contrib> pointing to the @id on the &lt;aff>.
+    When there is more than one author and more than one affiliation in a &lt;contrib-group>, there mut be a relationship between them  defined by an &lt;xref ref-type="aff" in the &lt;contrib> pointing to the @id on the &lt;aff>.
   </report>
   
   <report test="name(child::node()[1])='sup' and string-length(sup[1])=1">
-    ERROR: Do not put label content in &lt;sup> at the begnning of &lt;aff>. Use  &lt;label> instead.
+    Do not put label content in &lt;sup> at the begnning of &lt;aff>. Use  &lt;label> instead.
   </report>
 </rule>
   
   <rule context="xref[name(id(@rid))='aff']">
     <assert test="@ref-type and @ref-type='aff'">
-      ERROR: &lt;xref> that point to &lt;aff> must have @ref-type="aff"/
+      &lt;xref> that point to &lt;aff> must have @ref-type="aff"/
     </assert>
   </rule>
   
   <rule context="institution-id">
     <assert test="@institution-id-type">
-      ERROR: &lt;institution-id> must have an @institutiion-id-type.
+      &lt;institution-id> must have an @institutiion-id-type.
     </assert>
   </rule>
   
   <rule context="contrib-id">
     <assert test="@contrib-id-type">
-      ERROR: &lt;contrib-id> must have a @contrib-id-type.
+      &lt;contrib-id> must have a @contrib-id-type.
     </assert>
   </rule>
   
   <rule context="country">
     <assert test="@country and string-length(@country)=2">
-      ERROR: &lt;country> must have a @coountry that indludes the ISO 3166-1 2-letter country code.
+      &lt;country> must have a @coountry that indludes the ISO 3166-1 2-letter country code.
     </assert>
   </rule>
   

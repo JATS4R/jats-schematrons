@@ -27,7 +27,7 @@
 
 <rule context="mixed-citation | element-citation">
     <report test="@publication-type='other'">
-        WARNING: Avoid using 'other' as a publication-type value.
+        Avoid using 'other' as a publication-type value.
     </report>
 </rule>
 

@@ -27,7 +27,7 @@
 
 <rule context="/article/front/article-meta[descendant::contrib]">
     <report test="not(descendant::contrib[@contrib-type='author'])">
-        WARNING: Articles should have authors included as &lt;contrib contrib-type="author".
+        Articles should have authors included as &lt;contrib contrib-type="author".
     </report>
 </rule>
 
