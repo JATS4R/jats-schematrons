@@ -59,7 +59,7 @@
   
   <rule context="country">
     <assert test="@country and string-length(@country)=2">
-      &lt;country> must have a @coountry that indludes the ISO 3166-1 2-letter country code.
+      &lt;country> must have a @country that includes the ISO 3166-1 2-letter country code.
     </assert>
   </rule>
   
