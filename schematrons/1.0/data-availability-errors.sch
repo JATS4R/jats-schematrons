@@ -21,14 +21,43 @@
     SOFTWARE.
     -->
 
-<pattern id="data-citations-warnings" 
+<pattern id="data-availability-errors" 
          xmlns="http://purl.oclc.org/dsdl/schematron"
          xmlns:j4r="http://jats4r.org/ns">
 
-<rule context="mixed-citation | element-citation">
-    <report test="@publication-type='other'">
-        Avoid using 'other' as a publication-type value.
+  
+  
+  <rule context="sec[@sec-type='data-availability']">
+    <assert test="parent::back">
+      Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
+    </assert>  
+  </rule>
+  
+  <rule context="sec">
+    <report test="j4r:data-avail-type(@sec-type)">
+      Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
     </report>
-</rule>
-
+  </rule>
+  
+  <rule context="fn">
+    <report test="@content-type='data-availability' or @fn-type='data-availability' or j4r:data-avail-type(@content-type) or j4r:data-avail-type(@fn-type)">
+      Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
+    </report>
+  </rule>
+  
+  <rule context="p">
+    <report test="@content-type='data-availability' or j4r:data-avail-type(@content-type)">
+      Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
+    </report>
+  </rule>
+  
+  <rule context="notes">
+    <report test="@notes-type='data-availability' or j4r:data-avail-type(@notes-type)">
+      Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
+    </report>
+  </rule>
+  
+  
 </pattern>
+
+

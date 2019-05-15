@@ -21,14 +21,16 @@
     SOFTWARE.
     -->
 
-<pattern id="data-citations-warnings" 
+<pattern id="data-availability-warnings" 
          xmlns="http://purl.oclc.org/dsdl/schematron"
+         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
          xmlns:j4r="http://jats4r.org/ns">
 
-<rule context="mixed-citation | element-citation">
-    <report test="@publication-type='other'">
-        Avoid using 'other' as a publication-type value.
-    </report>
-</rule>
+
+   <!-- <rule context="sec[@sec-type='data-availability']">
+        <assert test="title/text()='Data Availabilty'">
+            Data Availability Statements shoud have the title of "Data Availability" not "<value-of select="title/text()"/>
+        </assert>  
+    </rule>-->
 
 </pattern>
