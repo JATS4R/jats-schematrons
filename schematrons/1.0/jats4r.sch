@@ -26,23 +26,48 @@
         xmlns:j4r="http://jats4r.org/ns"
         queryBinding="xslt2">
 
+<!-- Define all namespaces and prefixes here -->
   <ns prefix="ali" uri="http://www.niso.org/schemas/ali/1.0"/>
   <ns prefix="j4r" uri="http://jats4r.org/ns"/>
   <ns prefix="mml" uri="http://www.w3.org/1998/Math/MathML"/>
   <ns prefix="xsi" uri="http://www.w3.org/2001/XMLSchema-instance"/>
   <ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
 
-
+<!-- Set phases for ERRORS and WARNINGS -->
+  <phase id="errors">
+    <active pattern="auths-aff-errors"/>
+    <active pattern="coi-errors"/>
+    <active pattern="data-availability-errors"/>
+    <active pattern="data-citations-errors"/>
+    <active pattern="math-errors"/>
+    <active pattern="permissions-errors"/>
+  </phase>
+  
+  <phase id="warnings">
+    <active pattern="auths-aff-warnings"/>
+    <active pattern="coi-warnings"/>
+    <active pattern="data-availability-warnings"/>
+    <active pattern="data-citations-warnings"/>
+    <active pattern="math-warnings"/>
+    <active pattern="permissions-warnings"/>
+  </phase>
+  
+<!-- Call in the files that include the tests -->
   <include href="auths-affs-errors.sch"/>
   <include href="auths-affs-warnings.sch"/>
+  
   <include href="coi-errors.sch"/>
   <include href="coi-warnings.sch"/>
+  
   <include href="data-availability-errors.sch"/>
   <include href="data-availability-warnings.sch"/>
+  
   <include href="data-citations-errors.sch"/>
   <include href="data-citations-warnings.sch"/>
+  
   <include href="math-errors.sch"/>
   <include href="math-warnings.sch"/>
+  
   <include href="permissions-errors.sch"/>
   <include href="permissions-warnings.sch"/>
   
