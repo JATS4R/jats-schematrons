@@ -1,4 +1,4 @@
-const validate = require('./validate')
+const validate = require('../lib/validate')
 
 describe('authors and affiliations', () => {
   test('aff label', async () => {
