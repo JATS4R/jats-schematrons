@@ -1,15 +1,15 @@
 <!DOCTYPE article
 PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.1 20151215//EN" " https://jats.nlm.nih.gov/archiving/1.2/JATS-archivearticle1.dtd">
 
-<!--- 
+<!---
 Expected Schematron Errors
   - When there is more than one author and more than one affiliation in a <contrib-group>, there mut be a relationship between them defined by an <xref ref-type="aff" in the <contrib> pointing to the @id on the <aff>.
-       
+
   Expected Schematron Warnings
-  
+
 
 -->
-<article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML"
+<article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ali="http://www.niso.org/schemas/ali/1.0/"
     article-type="other">
     <front>
         <journal-meta>
@@ -30,14 +30,14 @@ Expected Schematron Errors
         <article-meta>
             <article-id pub-id-type="doi">10.1371/journal.pbio.3000188</article-id>
             <article-id pub-id-type="publisher-id">PBIOLOGY-D-18-00631</article-id>
-     
+
             <title-group>
                 <article-title>Exact replication: Foundation of science or game of
                     chance?</article-title>
                 <alt-title alt-title-type="running-head">The challenges of exact
                     replication</alt-title>
             </title-group>
-            
+
             <contrib-group>
                 <contrib contrib-type="author">
                     <contrib-id authenticated="true" contrib-id-type="ORID"
@@ -57,10 +57,10 @@ Expected Schematron Errors
                     </name>
                 </contrib>
             </contrib-group>
-         
+
             <aff>Affiliationo 1</aff>
             <aff>Affiliation 2<institution-wrap><institution-id institution-id-type="something">12</institution-id></institution-wrap><country country="US">USA</country></aff>
-            
+
              <author-notes>
                 <fn fn-type="COI-statement" id="coi001">
                     <p>The authors have declared that no competing interests exist.</p>
@@ -163,8 +163,8 @@ Expected Schematron Errors
 
 
 
-            <p>In modern times, replication 
-                
+            <p>In modern times, replication
+
                 of results has been considered an integral part of the
                 scientific process, at least, since Karl Popper&#x02019;s famous declaration [<xref
                     rid="pbio.3000188.ref002" ref-type="bibr">2</xref>], and has again taken center
@@ -227,7 +227,7 @@ Expected Schematron Errors
                 0.3&#x02013;48.0 mm<sup>3</sup>]; standardized effect size of 0.96 (95% CI:
                 0.01&#x02013;1.87); t = 2.136; <italic>p</italic> = 0.047; see <xref
                     ref-type="supplementary-material" rid="pbio.3000188.s001">S1 Fig</xref>).</p>
-   
+
         </sec>
         <sec id="sec004">
             <title>Replacing mice with dice?</title>
@@ -1337,6 +1337,6 @@ Expected Schematron Errors
                     >28298413</pub-id></mixed-citation>
             </ref>
         </ref-list>
-  
+
     </back>
 </article>
