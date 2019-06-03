@@ -3,17 +3,11 @@ PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.1 201
 
 <!--- 
 Expected Schematron Errors
-===================================
-  - When there is more than one author and more than one affiliation in a <contrib-group>, there mut be a relationship between them defined by an <xref ref-type="aff" in the <contrib> pointing to the @id on the <aff>.
-  
-  - <contrib-id> must have a @contrib-id-type.
-  
-  - <institution-id> must have an @institution-id-type.
-  
-   -<ountry> must have a @country that includes the ISO 3166-1 2-letter country code.
-
-  Expected Schematron Warnings
-  ===================================
+ ================================
+   - <xref> that point to &lt;aff> must have @ref-type="aff"
+ 
+ Expected Schematron Warnings
+ ================================
 
 
 -->
@@ -48,13 +42,14 @@ Expected Schematron Errors
             
             <contrib-group>
                 <contrib contrib-type="author">
-                    <contrib-id authenticated="true" 
+                    <contrib-id authenticated="true" contrib-id-type="ORID"
                         >http://orcid.org/0000-0002-0147-8992</contrib-id>
                     <name>
                         <surname>Piper</surname>
                         <given-names>Sophie K.</given-names>
                     </name>
                     <xref rid="coi001"/>
+                    <xref rid="A1">1</xref>
                 </contrib>
                 <contrib contrib-type="author">
                     <contrib-id authenticated="true" contrib-id-type="orcid"
@@ -64,11 +59,10 @@ Expected Schematron Errors
                         <given-names>Ulrike</given-names>
                     </name>
                 </contrib>
+                <aff id="A1"><label>2</label>Affiliation 2<institution-wrap><institution-id institution-id-type="something">12</institution-id></institution-wrap><country country="US">USA</country></aff>
             </contrib-group>
          
-            <aff>Affiliationo 1</aff>
-            <aff>Affiliation 2<institution-wrap><institution-id >12</institution-id></institution-wrap><country country="USA">USA</country></aff>
-            
+        
              <author-notes>
                 <fn fn-type="COI-statement" id="coi001">
                     <p>The authors have declared that no competing interests exist.</p>
