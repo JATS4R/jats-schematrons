@@ -48,8 +48,10 @@
     <active pattern="coi-warnings"/>
     <active pattern="data-availability-warnings"/>
     <active pattern="data-citations-warnings"/>
+    <active pattern="kwd-warnings"/>
     <active pattern="math-warnings"/>
     <active pattern="permissions-warnings"/>
+    <active pattern="subj-warnings"/>
   </phase>
   
 <!-- Call in the files that include the tests -->
@@ -65,11 +67,15 @@
   <include href="data-citations-errors.sch"/>
   <include href="data-citations-warnings.sch"/>
   
+  <include href="kwd-warnings.sch"/>
+  
   <include href="math-errors.sch"/>
   <include href="math-warnings.sch"/>
   
   <include href="permissions-errors.sch"/>
   <include href="permissions-warnings.sch"/>
+  
+  <include href="subj-warnings.sch"/>
   
  <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
     <xsl:param name="v"/>
