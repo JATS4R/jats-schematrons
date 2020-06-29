@@ -41,6 +41,7 @@
     <active pattern="data-citations-errors"/>
     <active pattern="math-errors"/>
     <active pattern="permissions-errors"/>
+    <active pattern="preprint-citations-errors"/>
   </phase>
   
   <phase id="warnings">
@@ -51,6 +52,7 @@
     <active pattern="kwd-warnings"/>
     <active pattern="math-warnings"/>
     <active pattern="permissions-warnings"/>
+    <active pattern="preprint-citations-warnings"/>
     <active pattern="subj-warnings"/>
   </phase>
   
@@ -74,6 +76,9 @@
   
   <include href="permissions-errors.sch"/>
   <include href="permissions-warnings.sch"/>
+  
+  <include href="preprint-citations-errors.sch"/>
+  <include href="preprint-citations-warnings.sch"/>
   
   <include href="subj-warnings.sch"/>
   
