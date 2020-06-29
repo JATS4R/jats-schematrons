@@ -44,11 +44,11 @@
     
   </rule>
 
-  <rule context="year[ancestor::mixed-citation or ancestor::element-citation]">
-    <assert test="matches(.,'^([1][4-9]|[2][0])[0-9][0-9]$')">
-      &lt;year> in a citation must be a valid 4-digit year. "<value-of select="."/>" 
+  <rule context="year[(ancestor::mixed-citation or ancestor::element-citation) and not(parent::date)]">
+    <report test="matches(.,'[^\d]') and not(matches(@iso-8601-date,'^([1][4-9]|[2][0])[0-9][0-9]$'))">
+      &lt;year> in a citation must either contain a valid 4-digit year, or it must have an @iso-8601-date with a valid 4-digit year. "<value-of select="if (@iso-8601-date) then concat('&lt;year iso-8601-date=&quot;',@iso-8601-date,'&quot;>',.,'&lt;/year>') else (.)"/>" 
       was supplied 
-    </assert>
+    </report>
   </rule>
 
   <rule context="version">
