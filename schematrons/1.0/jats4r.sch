@@ -37,6 +37,7 @@
   <phase id="errors">
     <active pattern="auths-aff-errors"/>
     <active pattern="coi-errors"/>
+    <active pattern="credit-errors"/>
     <active pattern="data-availability-errors"/>
     <active pattern="data-citations-errors"/>
     <active pattern="funding-errors"/>
@@ -48,6 +49,7 @@
   <phase id="warnings">
     <active pattern="auths-aff-warnings"/>
     <active pattern="coi-warnings"/>
+    <active pattern="credit-warnings"/>
     <active pattern="data-availability-warnings"/>
     <active pattern="data-citations-warnings"/>
     <active pattern="kwd-warnings"/>
@@ -63,6 +65,9 @@
   
   <include href="coi-errors.sch"/>
   <include href="coi-warnings.sch"/>
+  
+  <include href="credit-errors.sch"/>
+  <include href="credit-warnings.sch"/>
   
   <include href="data-availability-errors.sch"/>
   <include href="data-availability-warnings.sch"/>
