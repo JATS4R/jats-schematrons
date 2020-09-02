@@ -55,8 +55,8 @@
     </rule>
     
     <rule context="article[number(replace(@dtd-version,'[^\d\.]','')) ge 1.2]//funding-group//institution-id[@vocab='open-funder-registry']">
-        <assert test="@vocab-identifier='10.13039/open-funder-registry'">
-            &lt;institution vocab="open-funder-registry"> in JATS <value-of select="ancestor::article/@dtd-version"/> must have an @vocab-identifier="10.13039/open-funder-registry". 
+        <assert test="@vocab-identifier='10.13039/open_funder_registry'">
+            &lt;institution vocab="open-funder-registry"> in JATS <value-of select="ancestor::article/@dtd-version"/> must have an @vocab-identifier="10.13039/open_funder_registry". 
         </assert>
         
         <assert test="@institution-id-type='doi'">
