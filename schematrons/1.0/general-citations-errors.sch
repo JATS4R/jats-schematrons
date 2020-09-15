@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2019 JATS4Reuse (https://jats4r.org)
+    Copyright (c) 2020 JATS4Reuse (https://jats4r.org)
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,27 +21,22 @@
     SOFTWARE.
     -->
 
-<pattern id="auths-aff-warnings" 
-         xmlns="http://purl.oclc.org/dsdl/schematron"
-         xmlns:j4r="http://jats4r.org/ns">
-
-    <rule context="/article/front/article-meta[descendant::contrib]">
-        <report test="not(descendant::contrib[@contrib-type='author'])">
-            Articles should have authors included as &lt;contrib contrib-type="author">.
-        </report>
+<pattern id="general-citations-errors" 
+    xmlns="http://purl.oclc.org/dsdl/schematron"
+    xmlns:j4r="http://jats4r.org/ns">
+    
+    <rule context="element-citation|mixed-citation">
+        <assert test="@publication-type">&lt;<name/>> does not have a publication-type attribute.</assert>
     </rule>
     
-    <rule context="contrib[@contrib-type='author']/xref[@ref-type='aff' and (* or normalize-space(.)!='')]">
-        <let name="aff" value="id(./@rid)"/>
-        <assert test="$aff/label">
-            &lt;xref> which contains content, but the &lt;aff> that it points to does not have a label.
-        </assert>
+    <rule context="element-citation/year|mixed-citation/year">
+        <report test="not(matches(.,'^[1][0-9][0-9][0-9]$|[2]0[0-2][0-9]$')) and not(matches(@iso-8601-date,'^[1][0-9][0-9][0-9]$|[2]0[0-2][0-9]$'))">&lt;year> which does not contain a 4 digit year must have an iso-8601-date attribute which does contain a 4 digit year.</report>
     </rule>
     
-    <rule context="contrib[@initials]">
-        <assert test="matches(@initials,'^[\p{L}]\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?$')">
-            &lt;xref> which contains content, but the &lt;aff> that it points to does not have a label.
-        </assert>
+    <rule context="element-citation/pub-id|mixed-citation/pub-id">
+        <assert test="@pub-id-type">&lt;year> which does not contain a 4 digit year must have an iso-8601-date attribute which does contain a 4 digit year.</assert>
     </rule>
 
 </pattern>
+
+

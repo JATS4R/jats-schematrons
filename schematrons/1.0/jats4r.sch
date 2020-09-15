@@ -41,6 +41,8 @@
     <active pattern="data-availability-errors"/>
     <active pattern="data-citations-errors"/>
     <active pattern="funding-errors"/>
+    <active pattern="general-citations-errors"/>
+    <active pattern="general-citations-warnings"/>
     <active pattern="math-errors"/>
     <active pattern="permissions-errors"/>
     <active pattern="preprint-citations-errors"/>
@@ -72,10 +74,13 @@
   <include href="data-availability-errors.sch"/>
   <include href="data-availability-warnings.sch"/>
   
-  <include href="funding-errors.sch"/>
-  
   <include href="data-citations-errors.sch"/>
   <include href="data-citations-warnings.sch"/>
+  
+  <include href="funding-errors.sch"/>
+  
+  <include href="general-citations-errors.sch"/>
+  <include href="general-citations-warnings.sch"/>
   
   <include href="kwd-warnings.sch"/>
   
