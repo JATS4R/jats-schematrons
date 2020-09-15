@@ -57,7 +57,7 @@
     </assert>
   </rule>
   
-  <rule context="country">
+  <rule context="aff//country">
     <let name="countries" value="document('countries.xml')"/>
     <let name="country" value="@country"/>
     
