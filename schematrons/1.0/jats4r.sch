@@ -40,12 +40,14 @@
     <active pattern="credit-errors"/>
     <active pattern="data-availability-errors"/>
     <active pattern="data-citations-errors"/>
+    <active pattern="display-object-errors"/>
     <active pattern="funding-errors"/>
     <active pattern="general-citations-errors"/>
     <active pattern="general-citations-warnings"/>
     <active pattern="math-errors"/>
     <active pattern="permissions-errors"/>
     <active pattern="preprint-citations-errors"/>
+    <active pattern="xml-lang-errors"/>
   </phase>
   
   <phase id="warnings">
@@ -54,6 +56,7 @@
     <active pattern="credit-warnings"/>
     <active pattern="data-availability-warnings"/>
     <active pattern="data-citations-warnings"/>
+    <active pattern="display-object-warnings"/>
     <active pattern="kwd-warnings"/>
     <active pattern="math-warnings"/>
     <active pattern="permissions-warnings"/>
@@ -77,6 +80,9 @@
   <include href="data-citations-errors.sch"/>
   <include href="data-citations-warnings.sch"/>
   
+  <include href="display-object-errors.sch"/>
+  <include href="display-object-warnings.sch"/>
+  
   <include href="funding-errors.sch"/>
   
   <include href="general-citations-errors.sch"/>
@@ -94,6 +100,8 @@
   <include href="preprint-citations-warnings.sch"/>
   
   <include href="subj-warnings.sch"/>
+  
+  <include href="xml-lang-errors.sch"/>
   
  <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
     <xsl:param name="v"/>
