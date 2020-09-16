@@ -26,7 +26,7 @@
     xmlns:j4r="http://jats4r.org/ns">
     
     <rule context="element-citation|mixed-citation">
-        <report test="@publication-type='other'">&lt;<name/>> has the attribute publication-type="other" which is not a preferred value.</report>
+        <report test="@publication-type='other'">&lt;<name/>> has the attribute publication-type="other". Avoid using this value.</report>
     </rule>
     
 </pattern>
