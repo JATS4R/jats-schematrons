@@ -56,7 +56,8 @@
     <active pattern="credit-warnings"/>
     <active pattern="data-availability-warnings"/>
     <active pattern="data-citations-warnings"/>
-    <active pattern="display-object-warnings"/>
+    <active pattern="display-object-warnings-1"/>
+    <active pattern="display-object-warnings-2"/>
     <active pattern="kwd-warnings"/>
     <active pattern="math-warnings"/>
     <active pattern="permissions-warnings"/>
@@ -81,7 +82,8 @@
   <include href="data-citations-warnings.sch"/>
   
   <include href="display-object-errors.sch"/>
-  <include href="display-object-warnings.sch"/>
+  <include href="display-object-warnings-1.sch"/>
+  <include href="display-object-warnings-2.sch"/>
   
   <include href="funding-errors.sch"/>
   

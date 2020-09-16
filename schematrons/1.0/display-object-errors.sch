@@ -40,7 +40,7 @@
     
     <rule context="fig">
         
-        <assert test="graphic">
+        <assert test="graphic or alternatives[graphic]">
             Images in &lt;<name/>> should be captured using &lt;graphic>. This &lt;<name/>> does not have a &lt;graphic>.
         </assert>
     </rule>

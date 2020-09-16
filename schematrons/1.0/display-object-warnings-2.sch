@@ -21,28 +21,15 @@
     SOFTWARE.
     -->
 
-<pattern id="display-object-warnings" 
+<pattern id="display-object-warnings-2" 
          xmlns="http://purl.oclc.org/dsdl/schematron"
          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
          xmlns:j4r="http://jats4r.org/ns">
 
-<!-- Need to extend for various other languages -->
-    <rule context="fig[(not(label) or label[not(*) and normalize-space(.)='']) and caption]|fig-group[not(label) and caption]">
-        <report test="matches(lower-case(caption[1]),'^\s*fig(ure)?\.?\s*\d|^\s*scheme\.?\s*\d|^\s*supplement(al|ary)?\.?\s*\d|^\s*supplement(al|ary)?\s*fig(ure)?\.?\s*\d')">
-            &lt;<name/>> has no non-empty label, but its caption begins with what looks like a label '<value-of select="substring(caption[1],1,10)"/>'. 
-        </report>  
-    </rule>
-    
-    <rule context="table-wrap[(not(label) or label[not(*) and normalize-space(.)='']) and caption]|table-wrap-group[not(label) and caption]">
-        <report test="matches(lower-case(caption[1]),'^\s*table\.?\s*\d||^\s*supplement(al|ary)?\s*table\.?\s*\d')">
-            &lt;<name/>> has no non-empty label, but its caption begins with what looks like a label '<value-of select="substring(caption[1],1,10)"/>'. 
-        </report>  
-    </rule>
-    
-    <rule context="boxed-text[(not(label) or label[not(*) and normalize-space(.)='']) and caption]">
-        <report test="matches(lower-case(caption[1]),'^\s*box\.?\s*\d')">
-            &lt;<name/>> has no non-empty label, but its caption begins with what looks like a label '<value-of select="substring(caption[1],1,10)"/>'. 
-        </report>  
+    <rule context="fig|fig-group[label or caption[title or p]]|table-wrap|table-wrap-group[label or caption[title or p]]|boxed-text|disp-formula-group[label or caption[title or p]]|chem-struct-wrap[label or caption[title or p]]">
+        <assert test="@id">
+            &lt;<name/>> has no id attribute. 
+        </assert>  
     </rule>
 
 </pattern>

@@ -24,14 +24,14 @@ Expected Schematron Errors
         </article-meta>
     </front>
     <body>
-        <fig-group>
+        <fig-group id="fig1">
             <label>Figure 1</label>
-            <fig>
+            <fig id="fig1a">
                 <label>Figure 1A</label>
                 <graphic/>
             </fig>
             <!-- Expect error: Images in <fig> should be captured using <graphic>. This <fig> does not have a <graphic>. -->
-            <fig>
+            <fig id="fig1b">
                 <label>Figure 1B</label>
                 <media/>
             </fig>
@@ -41,8 +41,8 @@ Expected Schematron Errors
         <fig-group> should have a <label> and/or a <caption> with a child <title> and/or <p> which is not empty.
         -->
         <fig-group>
-            <fig>
-                <label>Figure 1A</label>
+            <fig id="fig2a">
+                <label>Figure 2A</label>
                 <caption><title/></caption>
                 <graphic/>
             </fig>
@@ -50,11 +50,12 @@ Expected Schematron Errors
         <!-- Expect error: 
         <table-wrap-group> should have more than 1 child <table-wrap> with a label and/or caption. This one has 0.
         -->
-        <table-wrap-group>
+        <table-wrap-group id="table1">
             <label>Table 1.</label>
-            <table-wrap/>
-            <table-wrap/>
+            <table-wrap id="table1.1"/>
+            <table-wrap id="table1.2"/>
         </table-wrap-group>
+        <!-- Expect warning: <disp-formula-group> has no id attribute. -->
         <disp-formula-group>
             <label>Equation 1</label>
             <disp-formula>
@@ -65,28 +66,28 @@ Expected Schematron Errors
             </disp-formula>
         </disp-formula-group>
         <!-- Expect warning: <fig> has no non-empty label, but its caption begins with what looks like a label 'Figure 2. '. -->
-        <fig>
+        <fig id="fig3">
             <label/>
-            <caption><title>Figure 2. Here is a title</title></caption>
+            <caption><title>Figure 3. Here is a title</title></caption>
             <graphic/>
         </fig>
         <!-- Expect warning: <table-wrap> has no non-empty label, but its caption begins with what looks like a label 'Supplement'. -->
-        <table-wrap>
+        <table-wrap id="sup1">
             <caption><p>Supplemental table 1. Here is a legend</p></caption>
             <table/>
         </table-wrap>
         <!-- Expect error: <boxed-text> has no non-empty label, but its caption begins with what looks like a label 'Box 1. Her'. -->
-        <boxed-text>
+        <boxed-text id="box1">
             <caption><title>Box 1. Here is a title</title></caption>
         </boxed-text>
         <!-- Expect error: <fig> has an xml:lang attribute, whose value (french) is not one of the IETF RFC 5646 values. -->
-        <fig xml:lang="french">
+        <fig id="fr1" xml:lang="french">
             <!-- Expect error: <object-id pub-id-type="doi"> must contain a valid doi. 'https//doi.org/192983.u489302jifbf' is not a valid doi. -->
             <object-id pub-id-type="doi">https//doi.org/192983.u489302jifbf</object-id>
             <caption><title>Table 1. Voici un titre</title></caption>
             <graphic/>
         </fig>
-        <fig xml:lang="fr">
+        <fig id="fr2" xml:lang="fr">
             <object-id pub-id-type="doi">10.1489302/jifbf</object-id>
             <label>Fig 2</label>
             <graphic/>
