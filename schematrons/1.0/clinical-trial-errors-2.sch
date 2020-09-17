@@ -29,11 +29,15 @@
     <let name="document-id" value="@document-id"/>
     
     <assert test="matches($document-id,'^10\.\d{4,9}/[-._;\+()#/:A-Za-z0-9&lt;&gt;\[\]]+$')">
-      Clinical trial &lt;related-object has a document-id-type='doi' attribute, but the document-id attribute value is not a doi - <value-of select="@document-id"/>.
+      Clinical trial &lt;related-object> has a document-id-type='doi' attribute, but the document-id attribute value is not a doi - <value-of select="@document-id"/>.
     </assert>
     
     <report test="preceding::related-object[@document-id = $document-id]">
-      More than one &lt;related-object with the attribute document-id="<value-of select="$document-id"/>" exists in the document.
+      More than one &lt;related-object> with the attribute document-id="<value-of select="$document-id"/>" exists in the document.
+    </report>
+    
+    <report test="count(tokenize(@document-id,' ')) gt 1">
+      document-id attribute on &lt;related-object> has more than 1 value "<value-of select="$document-id"/>". Each clinical trial number should be captured in its own &lt;related-object> element.
     </report>
   </rule>
   
@@ -42,6 +46,10 @@
     
     <report test="preceding::related-object[@document-id = $document-id]">
       More than one &lt;related-object> with the attribute document-id="<value-of select="$document-id"/>" exists in the document.
+    </report>
+    
+    <report test="count(tokenize(@document-id,' ')) gt 1">
+      document-id attribute on &lt;related-object> has more than 1 value "<value-of select="$document-id"/>". Each clinical trial number should be captured in its own &lt;related-object> element.
     </report>
   </rule>
   
