@@ -45,7 +45,7 @@
         <let name="source-id" value="@source-id"/>
         
         <report test="not(@source-type='clinical-trials-registry') and (some $registry in $registries//*:registry satisfies (($registry/@title = $source-id) or ($registry/@doi = $source-id) or ($registry/@other-title = $source-id) or ($registry/@subtitle = $source-id)))">
-            Clinical trial links in &lt;related-object> should have source-type="clinical-trials-registry" attribute.
+            &lt;related-object> clinical trial links should have a source-type="clinical-trials-registry" attribute.
         </report>
         
     </rule>
