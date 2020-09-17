@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2019 JATS4Reuse (https://jats4r.org)
+    Copyright (c) 2020 JATS4Reuse (https://jats4r.org)
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,26 +21,17 @@
     SOFTWARE.
     -->
 
-<pattern id="auths-aff-warnings" 
+<pattern id="xml-lang-errors" 
          xmlns="http://purl.oclc.org/dsdl/schematron"
+         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
          xmlns:j4r="http://jats4r.org/ns">
-
-    <rule context="/article/front/article-meta[descendant::contrib]">
-        <report test="not(descendant::contrib[@contrib-type='author'])">
-            Articles should have authors included as &lt;contrib contrib-type="author">.
-        </report>
-    </rule>
     
-    <rule context="contrib[@contrib-type='author']/xref[@ref-type='aff' and (* or normalize-space(.)!='')]">
-        <let name="aff" value="id(./@rid)"/>
-        <assert test="$aff/label">
-            &lt;xref> which contains content, but the &lt;aff> that it points to does not have a label.
-        </assert>
-    </rule>
-    
-    <rule context="contrib[@initials]">
-        <assert test="matches(@initials,'^[\p{L}]\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?$')">
-            &lt;xref> which contains content, but the &lt;aff> that it points to does not have a label.
+    <rule context="fig[@xml:lang]|fig-group[@xml:lang]|table-wrap[@xml:lang]|table-wrap-group[@xml:lang]|disp-formula[@xml:lang]|disp-formula-group[@xml:lang]|boxed-text[@xml:lang]">
+        <let name="object-lang" value="@xml:lang"/>
+        <let name="langs" value="doc('lang.xml')"/>
+        
+        <assert test="some $lang in $langs//*:lang satisfies $lang/@subtag = $object-lang">
+            &lt;<name/>> has an xml:lang attribute, whose value (<value-of select="$object-lang"/>) is not one of the IETF RFC 5646 values.
         </assert>
     </rule>
 

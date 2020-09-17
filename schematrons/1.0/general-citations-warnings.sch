@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2019 JATS4Reuse (https://jats4r.org)
+    Copyright (c) 2020 JATS4Reuse (https://jats4r.org)
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,27 +21,28 @@
     SOFTWARE.
     -->
 
-<pattern id="auths-aff-warnings" 
-         xmlns="http://purl.oclc.org/dsdl/schematron"
-         xmlns:j4r="http://jats4r.org/ns">
-
-    <rule context="/article/front/article-meta[descendant::contrib]">
-        <report test="not(descendant::contrib[@contrib-type='author'])">
-            Articles should have authors included as &lt;contrib contrib-type="author">.
+<pattern id="general-citations-warnings" 
+    xmlns="http://purl.oclc.org/dsdl/schematron"
+    xmlns:j4r="http://jats4r.org/ns">
+    
+    <rule context="element-citation|mixed-citation">
+        <report test="@publication-type='other'">
+            &lt;<name/>> has the attribute publication-type="other". Avoid using this value.
         </report>
-    </rule>
-    
-    <rule context="contrib[@contrib-type='author']/xref[@ref-type='aff' and (* or normalize-space(.)!='')]">
-        <let name="aff" value="id(./@rid)"/>
-        <assert test="$aff/label">
-            &lt;xref> which contains content, but the &lt;aff> that it points to does not have a label.
+        
+        <assert test="person-group[@person-group-type]">
+            Where possible &lt;<name/>> should always have a child &lt;person-group> which hold the contributors for that work, with their role being specified in the attribute person-group-type. This &lt;<name/>> does not have a &lt;person-group person-group-type="...">.
         </assert>
     </rule>
     
-    <rule context="contrib[@initials]">
-        <assert test="matches(@initials,'^[\p{L}]\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?$')">
-            &lt;xref> which contains content, but the &lt;aff> that it points to does not have a label.
+    <rule context="name[ancestor::element-citation]|string-name[ancestor::mixed-citation]">
+        
+        <assert test="parent::person-group[@person-group-type]">
+            Where possible &lt;<name/>> should be captured in a parent &lt;person-group>, with their role being specified in the attribute person-group-type on that element. This &lt;<name/>> is a child of &lt;<value-of select="parent::*/local-name()"/>>.
         </assert>
+        
     </rule>
-
+    
 </pattern>
+
+

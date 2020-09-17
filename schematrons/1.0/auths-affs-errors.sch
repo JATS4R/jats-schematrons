@@ -27,7 +27,7 @@
 
 <rule context="aff">
   <report test="parent::article-meta and following-sibling::aff and count(preceding::contrib) > 1 and ((@id and not(idref(@id)) or not(@id)))">
-    When there is more than one author and more than one affiliation, there mut be a relationship between them either by position of the &lt;aff> in the &lt;contrib-group> or with &lt;xref ref-type="aff"  in the &lt;contrib> pointing to the @id on the &lt;aff>.
+    When there is more than one author and more than one affiliation, there must be a relationship between them either by position of the &lt;aff> in the &lt;contrib-group> or with &lt;xref ref-type="aff"  in the &lt;contrib> pointing to the @id on the &lt;aff>.
   </report>
   
   <report test="parent::contrib-group and following-sibling::aff and count(preceding-sibling::contrib) > 1 and ((@id and not(idref(@id)) or not(@id)))">
@@ -57,16 +57,14 @@
     </assert>
   </rule>
   
-  <rule context="country">
-    <assert test="@country and string-length(@country)=2">
+  <rule context="aff//country">
+    <let name="countries" value="document('countries.xml')"/>
+    <let name="country" value="@country"/>
+    
+    <assert test="@country and (some $code in $countries//*:country satisfies $code/@country = $country)">
       &lt;country> must have a @country that includes the ISO 3166-1 2-letter country code.
     </assert>
   </rule>
-  
-  
-  
-  
-
 
 </pattern>
 

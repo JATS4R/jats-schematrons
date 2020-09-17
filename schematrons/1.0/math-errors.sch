@@ -30,9 +30,8 @@
       All mathematical expressions should be enclosed in an <inline-formula> element (for 
       expressions within the flow of text) or a <disp-formula> element (for display equations).
    -->
-    <assert test="ancestor::disp-formula or ancestor::inline-formula"> 
-      Math expressions must
-      be in &lt;disp-formula&gt; or &lt;inline-formula&gt; elements. They should not appear directly
+    <assert test="parent::disp-formula or parent::inline-formula or parent::alternatives[parent::disp-formula or parent::inline-formula]"> 
+      Math expressions must be in &lt;disp-formula&gt; or &lt;inline-formula&gt; elements. They should not appear directly
       in &lt;<value-of select="name(parent::node())"/>&gt;. 
     </assert>
   </rule>

@@ -37,19 +37,31 @@
   <phase id="errors">
     <active pattern="auths-aff-errors"/>
     <active pattern="coi-errors"/>
+    <active pattern="clinical-trial-errors-1"/>
+    <active pattern="clinical-trial-errors-2"/>
+    <active pattern="credit-errors"/>
     <active pattern="data-availability-errors"/>
     <active pattern="data-citations-errors"/>
+    <active pattern="display-object-errors"/>
+    <active pattern="ethics-errors"/>
     <active pattern="funding-errors"/>
+    <active pattern="general-citations-errors"/>
+    <active pattern="general-citations-warnings"/>
     <active pattern="math-errors"/>
     <active pattern="permissions-errors"/>
     <active pattern="preprint-citations-errors"/>
+    <active pattern="xml-lang-errors"/>
   </phase>
   
   <phase id="warnings">
     <active pattern="auths-aff-warnings"/>
     <active pattern="coi-warnings"/>
+    <active pattern="clinical-trial-warnings"/>
+    <active pattern="credit-warnings"/>
     <active pattern="data-availability-warnings"/>
-    <active pattern="data-citations-warnings"/>
+    <active pattern="display-object-warnings-1"/>
+    <active pattern="display-object-warnings-2"/>
+    <active pattern="ethics-warnings"/>
     <active pattern="kwd-warnings"/>
     <active pattern="math-warnings"/>
     <active pattern="permissions-warnings"/>
@@ -64,13 +76,29 @@
   <include href="coi-errors.sch"/>
   <include href="coi-warnings.sch"/>
   
+  <include href="clinical-trial-errors-1.sch"/>
+  <include href="clinical-trial-errors-2.sch"/>
+  <include href="clinical-trial-warnings.sch"/>
+  
+  <include href="credit-errors.sch"/>
+  <include href="credit-warnings.sch"/>
+  
   <include href="data-availability-errors.sch"/>
   <include href="data-availability-warnings.sch"/>
   
+  <include href="data-citations-errors.sch"/>
+  
+  <include href="display-object-errors.sch"/>
+  <include href="display-object-warnings-1.sch"/>
+  <include href="display-object-warnings-2.sch"/>
+  
+  <include href="ethics-errors.sch"/>
+  <include href="ethics-warnings.sch"/>
+  
   <include href="funding-errors.sch"/>
   
-  <include href="data-citations-errors.sch"/>
-  <include href="data-citations-warnings.sch"/>
+  <include href="general-citations-errors.sch"/>
+  <include href="general-citations-warnings.sch"/>
   
   <include href="kwd-warnings.sch"/>
   
@@ -84,6 +112,8 @@
   <include href="preprint-citations-warnings.sch"/>
   
   <include href="subj-warnings.sch"/>
+  
+  <include href="xml-lang-errors.sch"/>
   
  <xsl:function name='j4r:jats-version-later-1d2' as="xsd:boolean">
     <xsl:param name="v"/>

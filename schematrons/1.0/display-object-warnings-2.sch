@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright (c) 2019 JATS4Reuse (https://jats4r.org)
+    Copyright (c) 2020 JATS4Reuse (https://jats4r.org)
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -21,14 +21,15 @@
     SOFTWARE.
     -->
 
-<pattern id="data-citations-warnings" 
+<pattern id="display-object-warnings-2" 
          xmlns="http://purl.oclc.org/dsdl/schematron"
+         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
          xmlns:j4r="http://jats4r.org/ns">
 
-<rule context="mixed-citation | element-citation">
-    <report test="@publication-type='other'">
-        Avoid using 'other' as a publication-type value.
-    </report>
-</rule>
+    <rule context="fig|fig-group[label or caption[title or p]]|table-wrap|table-wrap-group[label or caption[title or p]]|boxed-text|disp-formula-group[label or caption[title or p]]|chem-struct-wrap[label or caption[title or p]]">
+        <assert test="@id">
+            &lt;<name/>> has no id attribute. 
+        </assert>  
+    </rule>
 
 </pattern>
