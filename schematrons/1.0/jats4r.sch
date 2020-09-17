@@ -37,6 +37,8 @@
   <phase id="errors">
     <active pattern="auths-aff-errors"/>
     <active pattern="coi-errors"/>
+    <active pattern="clinical-trial-errors-1"/>
+    <active pattern="clinical-trial-errors-2"/>
     <active pattern="credit-errors"/>
     <active pattern="data-availability-errors"/>
     <active pattern="data-citations-errors"/>
@@ -54,6 +56,7 @@
   <phase id="warnings">
     <active pattern="auths-aff-warnings"/>
     <active pattern="coi-warnings"/>
+    <active pattern="clinical-trial-warnings"/>
     <active pattern="credit-warnings"/>
     <active pattern="data-availability-warnings"/>
     <active pattern="display-object-warnings-1"/>
@@ -72,6 +75,10 @@
   
   <include href="coi-errors.sch"/>
   <include href="coi-warnings.sch"/>
+  
+  <include href="clinical-trial-errors-1.sch"/>
+  <include href="clinical-trial-errors-2.sch"/>
+  <include href="clinical-trial-warnings.sch"/>
   
   <include href="credit-errors.sch"/>
   <include href="credit-warnings.sch"/>
