@@ -41,6 +41,7 @@
     <active pattern="data-availability-errors"/>
     <active pattern="data-citations-errors"/>
     <active pattern="display-object-errors"/>
+    <active pattern="ethics-errors"/>
     <active pattern="funding-errors"/>
     <active pattern="general-citations-errors"/>
     <active pattern="general-citations-warnings"/>
@@ -57,6 +58,7 @@
     <active pattern="data-availability-warnings"/>
     <active pattern="display-object-warnings-1"/>
     <active pattern="display-object-warnings-2"/>
+    <active pattern="ethics-warnings"/>
     <active pattern="kwd-warnings"/>
     <active pattern="math-warnings"/>
     <active pattern="permissions-warnings"/>
@@ -82,6 +84,9 @@
   <include href="display-object-errors.sch"/>
   <include href="display-object-warnings-1.sch"/>
   <include href="display-object-warnings-2.sch"/>
+  
+  <include href="ethics-errors.sch"/>
+  <include href="ethics-warnings.sch"/>
   
   <include href="funding-errors.sch"/>
   
