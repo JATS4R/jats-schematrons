@@ -33,14 +33,6 @@
         <assert test="person-group[@person-group-type]">
             Where possible &lt;<name/>> should always have a child &lt;person-group> which hold the contributors for that work, with their role being specified in the attribute person-group-type. This &lt;<name/>> does not have a &lt;person-group person-group-type="...">.
         </assert>
-        
-        <report test="elocation-id and (fpage or lpage)">
-            Either &lt;elocation-id> or &lt;fpage> (and possibly &lt;lpage>) should be included in a reference. &lt;<name/>> has both &lt;elocation-id> as well as <value-of select="if (fpage and lpage) then 'both &lt;fpage> and &lt;lpage>' else concat('&lt;',*[name()=('fpage','lpage')],'>')"></value-of>
-        </report>
-        
-        <report test="lpage and (number(replace(fpage[1],'[\d\.]','')) ge number(replace(lpage[1],'[\d\.]','')))">
-            &lt;lpage> must be larger than &lt;fpage>, if present.
-        </report>
     </rule>
     
     <rule context="name[ancestor::element-citation]|string-name[ancestor::mixed-citation]">

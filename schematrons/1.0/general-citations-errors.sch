@@ -27,6 +27,14 @@
     
     <rule context="element-citation|mixed-citation">
         <assert test="@publication-type">&lt;<name/>> does not have a publication-type attribute.</assert>
+        
+        <report test="elocation-id and (fpage or lpage or page-range)">
+            Either &lt;elocation-id> or &lt;fpage> (and possibly &lt;lpage>) should be included in a reference. &lt;<name/>> has both &lt;elocation-id> as well as <value-of select="if (fpage and lpage) then 'both &lt;fpage> and &lt;lpage>' else concat('&lt;',*[name()=('fpage','lpage')],'>')"></value-of>
+        </report>
+        
+        <report test="not(page-range) and lpage and (number(replace(fpage[1],'[^\d\.]','')) gt number(replace(lpage[1],'[^\d\.]','')))">
+            &lt;lpage> must be larger than &lt;fpage>, if present.
+        </report>
     </rule>
     
     <rule context="element-citation/year|mixed-citation/year">
