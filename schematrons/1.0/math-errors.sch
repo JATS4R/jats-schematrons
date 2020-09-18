@@ -27,11 +27,11 @@
 
   <rule context="mml:math | tex-math">
     <!--
-      All mathematical expressions should be enclosed in an <inline-formula> element (for 
+      All mathematical expressions must be enclosed in an <inline-formula> element (for 
       expressions within the flow of text) or a <disp-formula> element (for display equations).
    -->
-    <assert test="parent::disp-formula or parent::inline-formula or parent::alternatives[parent::disp-formula or parent::inline-formula]"> 
-      Math expressions must be in &lt;disp-formula&gt; or &lt;inline-formula&gt; elements. They should not appear directly
+    <assert test="parent::disp-formula or parent::inline-formula or parent::alternatives[parent::disp-formula or parent::inline-formula]" role="error"> 
+      Math expressions must be in &lt;disp-formula&gt; or &lt;inline-formula&gt; elements. They must not appear directly
       in &lt;<value-of select="name(parent::node())"/>&gt;. 
     </assert>
   </rule>
@@ -39,8 +39,8 @@
   <rule context="disp-formula | inline-formula">
     <assert test="
         count(child::graphic) + count(child::tex-math) +
-        count(child::mml:math) &lt; 2"> 
-      Formula element should contain only one expression. If these are alternate
+        count(child::mml:math) &lt; 2" role="error"> 
+      Formula element must contain only one expression. If these are alternate
       representations of the same expression, use &lt;alternatives&gt;. If they are different
       expressions, tag each in its own &lt;<value-of select="name()"/>&gt;. 
     </assert>
@@ -50,7 +50,7 @@
     <assert test="
         count(child::graphic) + count(child::inline-graphic) &lt;= 1 and
         count(child::tex-math) &lt;= 1 and
-        count(child::mml:math) &lt;= 1"> 
+        count(child::mml:math) &lt;= 1" role="error"> 
       For alternate representations of the same expression, there can be at most one of
       each type of representation (graphic or inline-graphic, tex-math, and mml:math). 
     </assert>

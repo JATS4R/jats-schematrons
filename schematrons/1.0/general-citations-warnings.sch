@@ -26,18 +26,18 @@
     xmlns:j4r="http://jats4r.org/ns">
     
     <rule context="element-citation|mixed-citation">
-        <report test="@publication-type='other'">
+        <report test="@publication-type='other'" role="warning">
             &lt;<name/>> has the attribute publication-type="other". Avoid using this value.
         </report>
         
-        <assert test="person-group[@person-group-type]">
+        <assert test="person-group[@person-group-type]" role="warning">
             Where possible &lt;<name/>> should always have a child &lt;person-group> which hold the contributors for that work, with their role being specified in the attribute person-group-type. This &lt;<name/>> does not have a &lt;person-group person-group-type="...">.
         </assert>
     </rule>
     
     <rule context="name[ancestor::element-citation]|string-name[ancestor::mixed-citation]">
         
-        <assert test="parent::person-group[@person-group-type]">
+        <assert test="parent::person-group[@person-group-type]" role="warning">
             Where possible &lt;<name/>> should be captured in a parent &lt;person-group>, with their role being specified in the attribute person-group-type on that element. This &lt;<name/>> is a child of &lt;<value-of select="parent::*/local-name()"/>>.
         </assert>
         

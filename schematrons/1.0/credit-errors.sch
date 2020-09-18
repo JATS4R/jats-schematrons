@@ -31,22 +31,22 @@
         <let name="vocab-term-id" value="lower-case(@vocab-term-identifier)"/>
         <let name="credit-role" value="$credit-roles//*:item[(@term = $vocab-term) or (@uri = $vocab-term-id)]"/>
         
-        <assert test="@vocab-identifier='http://credit.niso.org/'">
+        <assert test="@vocab-identifier='http://credit.niso.org/'" role="error">
             A CRediT taxonomy role must have a @vocab-identifier whose value is http://credit.niso.org/.
         </assert>
         
-        <report test="not(@vocab-term-identifier) or ((count($credit-role) = 1) and ($vocab-term-id != $credit-role/@uri))">
-            A CRediT taxonomy role must have a @vocab-term-identifier, the value of which should be the URL of the specific CRediT term. <value-of select="if (empty($credit-role)) then concat('It should be one of these - ',string-join($credit-roles//*:item/@uri,', ')) 
+        <report test="not(@vocab-term-identifier) or ((count($credit-role) = 1) and ($vocab-term-id != $credit-role/@uri))" role="error">
+            A CRediT taxonomy role must have a @vocab-term-identifier, the value of which must be the URL of the specific CRediT term. <value-of select="if (empty($credit-role)) then concat('It must be one of these - ',string-join($credit-roles//*:item/@uri,', ')) 
                 else concat('In this case ',$credit-role/@uri,' (based on the @vocab-term of this role element)')"/>.
         </report>
         
-        <report test="not(@vocab-term) or ((count($credit-role) = 1) and ($vocab-term != $credit-role/@term))">
-            A CRediT taxonomy role must have a @vocab-term, the value of which should be one of the CRediT terms - <value-of select="if (empty($credit-role)) then string-join($credit-roles//*:item/@term,', ') 
+        <report test="not(@vocab-term) or ((count($credit-role) = 1) and ($vocab-term != $credit-role/@term))" role="error">
+            A CRediT taxonomy role must have a @vocab-term, the value of which must be one of the CRediT terms - <value-of select="if (empty($credit-role)) then string-join($credit-roles//*:item/@term,', ') 
                 else concat(' in this case ',$credit-role/@term,' (based on the @vocab-term-identifer of of this role element)')"/>.
         </report>
         
-        <report test="count($credit-role) gt 1">
-            A CRediT taxonomy role must have a @vocab-term, whose value is a specific CRediT taxonomy term, and a @vocab-term-identifier, whose value is the URL for that corresponding CRediT term. <value-of select="concat('Either the @vocab-term - ', $vocab-term, ' - is incorrect and should be ', $credit-role[@uri=$vocab-term-id]/@term, ', or the @vocab-term-identifier - ', $vocab-term-id,' - is incorrect and should be ', $credit-role[@term=$vocab-term]/@uri)"/>.
+        <report test="count($credit-role) gt 1" role="error">
+            A CRediT taxonomy role must have a @vocab-term, whose value is a specific CRediT taxonomy term, and a @vocab-term-identifier, whose value is the URL for that corresponding CRediT term. <value-of select="concat('Either the @vocab-term - ', $vocab-term, ' - is incorrect and must be ', $credit-role[@uri=$vocab-term-id]/@term, ', or the @vocab-term-identifier - ', $vocab-term-id,' - is incorrect and must be ', $credit-role[@term=$vocab-term]/@uri)"/>.
         </report>
         
     </rule>
@@ -56,7 +56,7 @@
         <let name="vocab-term" value="@vocab-term"/>
         <let name="vocab-term-id" value="lower-case(@vocab-term-identifier)"/>
         
-        <report test="some $x in $credit-roles//*:item satisfies ($x/@uri=$vocab-term-id) or ($x/@term=$vocab-term)">
+        <report test="some $x in $credit-roles//*:item satisfies ($x/@uri=$vocab-term-id) or ($x/@term=$vocab-term)" role="error">
             A CRediT taxonomy role must have a @vocab whose value is 'credit'.
         </report>
         
@@ -66,8 +66,8 @@
         <let name="credit-roles" value="document('credit-roles.xml')"/>
         <let name="type" value="lower-case(@content-type)"/>
         
-        <assert test="some $item in $credit-roles//*:item satisfies $item/@uri = $type">
-            A CRediT taxonomy role should have a @content-type, whose value should be one of the specific CRediT term URLs. <value-of select="@content-type"/> is not one of <value-of select="string-join($credit-roles//*:item/@uri,', ')"/>.
+        <assert test="some $item in $credit-roles//*:item satisfies $item/@uri = $type" role="error">
+            A CRediT taxonomy role must have a @content-type, whose value must be one of the specific CRediT term URLs. <value-of select="@content-type"/> is not one of <value-of select="string-join($credit-roles//*:item/@uri,', ')"/>.
         </assert>
     </rule>
     

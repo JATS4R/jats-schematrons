@@ -26,20 +26,20 @@
          xmlns:j4r="http://jats4r.org/ns">
 
     <rule context="/article/front/article-meta[descendant::contrib]">
-        <report test="not(descendant::contrib[@contrib-type='author'])">
+        <report test="not(descendant::contrib[@contrib-type='author'])" role="warning">
             Articles should have authors included as &lt;contrib contrib-type="author">.
         </report>
     </rule>
     
-    <rule context="contrib[@contrib-type='author']/xref[@ref-type='aff' and (* or normalize-space(.)!='')]">
+    <rule context="contrib[@contrib-type='author']/xref[@ref-type='aff' and (* or normalize-space(.)!='')]" role="warning">
         <let name="aff" value="id(./@rid)"/>
-        <assert test="$aff/label">
+        <assert test="$aff/label" role="warning">
             &lt;xref> which contains content, but the &lt;aff> that it points to does not have a label.
         </assert>
     </rule>
     
     <rule context="contrib[@initials]">
-        <assert test="matches(@initials,'^[\p{L}]\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?$')">
+        <assert test="matches(@initials,'^[\p{L}]\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?[\p{L}]?\.?$')" role="warning">
             &lt;xref> which contains content, but the &lt;aff> that it points to does not have a label.
         </assert>
     </rule>

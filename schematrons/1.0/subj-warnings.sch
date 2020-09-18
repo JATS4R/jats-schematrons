@@ -28,18 +28,18 @@
     <rule context="*[subj-group]">
         <let name="vanilla-subj-group-count" value="count(subj-group[not(@xml:lang) and not(@subj-group-type)])"/>
         
-        <assert test="$vanilla-subj-group-count le 1">There should not be two or more &lt;subj-group>s without a @subj-group-type or @xml:lang attribute. <name/> contains <value-of select="$vanilla-subj-group-count"/>.</assert>
+        <assert test="$vanilla-subj-group-count le 1" role="warning">There should not be two or more &lt;subj-group>s without a @subj-group-type or @xml:lang attribute. <name/> contains <value-of select="$vanilla-subj-group-count"/>.</assert>
     </rule>
     
     <rule context="subj-group">
         
-        <report test="@xml:lang and (@xml:lang = ancestor::article/@xml:lang)"><name/> has @xml:lang="<value-of select="@xml:lang"/>", which is the same as the @xml:lang value on the article. It is unnecessary.</report>
+        <report test="@xml:lang and (@xml:lang = ancestor::article/@xml:lang)" role="warning"><name/> has @xml:lang="<value-of select="@xml:lang"/>", which is the same as the @xml:lang value on the article. It is unnecessary.</report>
         
     </rule>
     
     <rule context="compound-subject">    
         
-        <report test="count(compound-subject-part) = 1">There is only one  &lt;<name/>-part> in &lt;<name/>> - <value-of select="."/>.</report>
+        <report test="count(compound-subject-part) = 1" role="warning">There is only one  &lt;<name/>-part> in &lt;<name/>> - <value-of select="."/>.</report>
         
     </rule>
     

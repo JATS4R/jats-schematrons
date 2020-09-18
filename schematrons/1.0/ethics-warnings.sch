@@ -28,21 +28,21 @@
     
     <rule context="sec[@sec-type='ethics-statement']">
         
-        <report test="label and not(title)">
+        <report test="label and not(title)" role="warning">
             &lt;<name/> sec-type="ethics-statement"> has a &lt;label> but no &lt;title>. A human-readable heading should be captured in &lt;title> instead of &lt;label>.
         </report>
     </rule>
     
     <rule context="sec[@sec-type='ethics-statement']//sec[@sec-type]">
         
-        <assert test="starts-with(@sec-type,'ethics-')">
+        <assert test="starts-with(@sec-type,'ethics-')" role="warning">
             The value of @sec-type for a &lt;sec> which is a child of &lt;sec sec-type='ethics-statement'>, should start with 'ethics-'. '<value-of select="@sec-type"/>' does not.
         </assert>
     </rule>
     
     <rule context="sec[@sec-type='ethics-statement']/p[@content-type]|sec[@sec-type='ethics-statement']//named-content[@content-type]">
         
-        <assert test="starts-with(@content-type,'ethics-')">
+        <assert test="starts-with(@content-type,'ethics-')" role="warning">
             Ethics related information on &lt;<name/>> should be specified with a content-type attribute, whose value starts with 'ethics-' followed by publisher values, but this one is '<value-of select="@content-type"/>'.
         </assert>
     </rule>

@@ -29,19 +29,19 @@
     <let name="registries" value="doc('clinical-trial-registries.xml')"/>
     <let name="source-id" value="@source-id"/>
     
-    <report test="@source-id-type='crossref-doi' and not(some $registry in $registries//*:registry satisfies ($registry/@doi = $source-id))">
+    <report test="@source-id-type='crossref-doi' and not(some $registry in $registries//*:registry satisfies ($registry/@doi = $source-id))" role="error">
       Clinical trial &lt;related-object> elements must have a source-id attribute with a value which is either a WHO-approved registry DOI or name.
     </report>
     
-    <assert test="@source-id-type=('crossref-doi','registry-name')">
+    <assert test="@source-id-type=('crossref-doi','registry-name')" role="error">
       Clinical trial &lt;related-object> elements must have a source-id-type attribute with a value which is 'crossref-doi' or 'registry-name', depending what's in the source-id attribute.
     </assert>
     
-    <assert test="@document-id">
+    <assert test="@document-id" role="error">
       Clinical trial &lt;related-object> elements must have a document-id attribute with a value which is the clinical trial number as provided in the clinical trial registry.
     </assert>
     
-    <assert test="@document-id-type=('clinical-trial-number','doi')">
+    <assert test="@document-id-type=('clinical-trial-number','doi')" role="error">
       Clinical trial &lt;related-object> elements must have a document-id-type attribute with a value which is either 'clinical-trial-number' or 'doi'. '<value-of select="@document-id-type"/>' is not either of those.
     </assert>
     
@@ -52,20 +52,20 @@
     <let name="registries" value="doc('clinical-trial-registries.xml')"/>
     <let name="source-id" value="@source-id"/>
     
-    <assert test="some $registry in $registries//*:registry satisfies ($registry/@doi = $source-id)">
+    <assert test="some $registry in $registries//*:registry satisfies ($registry/@doi = $source-id)" role="error">
       Clinical trial links in &lt;related-object source-id-type="crossref-doi"> must have a source-id attribute with a value which is one of the WHO-approved registry DOIs. '<value-of select="$source-id"/>' is not one of the WHO-approved registry DOIs.
     </assert>
     
-    <assert test="@document-id">
+    <assert test="@document-id" role="error">
       Clinical trial &lt;related-object> elements must have a document-id attribute with a value which is the clinical trial number as provided in the clinical trial registry.
     </assert>
     
-    <assert test="@document-id-type=('clinical-trial-number','doi')">
+    <assert test="@document-id-type=('clinical-trial-number','doi')" role="error">
       Clinical trial &lt;related-object> elements must have a document-id-type attribute with a value which is either 'clinical-trial-number' or 'doi'. '<value-of select="@document-id-type"/>' is not either of those.
     </assert>
     
-    <report test="count(tokenize($source-id,' ')) gt 1">
-      source-id attribute on &lt;related-object source-id-type='crossref-doi'> has more than 1 value "<value-of select="$source-id"/>". Each clinical trial number should be captured in its own &lt;related-object> element.
+    <report test="count(tokenize($source-id,' ')) gt 1" role="error">
+      source-id attribute on &lt;related-object source-id-type='crossref-doi'> has more than 1 value "<value-of select="$source-id"/>". Each clinical trial number must be captured in its own &lt;related-object> element.
     </report>
     
   </rule>
@@ -73,11 +73,11 @@
   <!-- Included here again for related-object elements without the optional content-type attribute -->
   <rule context="related-object[not(@content-type) and @source-id-type='registry-name']">
     
-    <assert test="@document-id">
+    <assert test="@document-id" role="error">
       Clinical trial &lt;related-object> elements must have a document-id attribute with a value which is the clinical trial number as provided in the clinical trial registry.
     </assert>
     
-    <assert test="@document-id-type=('clinical-trial-number','doi')">
+    <assert test="@document-id-type=('clinical-trial-number','doi')" role="error">
       Clinical trial &lt;related-object> elements must have a document-id-type attribute with a value which is either 'clinical-trial-number' or 'doi'. '<value-of select="@document-id-type"/>' is not either of those.
     </assert>
     

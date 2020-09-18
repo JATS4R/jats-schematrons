@@ -28,14 +28,14 @@
     
     <rule context="sec[@sec-type='ethics-statement']//sec[@sec-type]">
         
-        <report test="@sec-type='ethics-statement'">
+        <report test="@sec-type='ethics-statement'" role="error">
             &lt;<name/> sec-type="ethics-statement"> appears more than once in the document.
         </report>
     </rule>
     
     <rule context="sec[@sec-type='ethics-statement']">
         
-        <report test="preceding::sec[@sec-type='ethics-statement']">
+        <report test="preceding::sec[@sec-type='ethics-statement']" role="error">
             &lt;<name/> sec-type="ethics-statement"> appears more than once in the document.
         </report>
     </rule>
@@ -43,15 +43,15 @@
     <rule context="sec[@sec-type!='ethics-statement']">
         
         <!-- Simple implementation with scope for improvement - perhaps with Levenshtein distance, or something faster  -->
-        <report test="lower-case(@sec-type) = 'ethics-statement'">
-            Ethics sections should have a sec-type="ethics-statement". This one has '<value-of select="@sec-type"/>'.
+        <report test="lower-case(@sec-type) = 'ethics-statement'" role="error">
+            Ethics sections must have a sec-type="ethics-statement". This one has '<value-of select="@sec-type"/>'.
         </report>
     </rule>
     
     <rule context="sec[@sec-type='ethics-statement']//p[@content-type]|sec[@sec-type='ethics-statement']//named-content[@content-type]">
         
-        <report test="@content-type='ethics-statement'">
-            Ethics related information on &lt;<name/>> should be specified with a content-type attribute, whose value is 'ethics-' followed by publisher values, but this one is 'ethics-statement'.
+        <report test="@content-type='ethics-statement'" role="error">
+            Ethics related information on &lt;<name/>> must be specified with a content-type attribute, whose value is 'ethics-' followed by publisher values, but this one is 'ethics-statement'.
         </report>
     </rule>
 

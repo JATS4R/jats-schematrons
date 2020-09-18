@@ -27,7 +27,7 @@
          xmlns:j4r="http://jats4r.org/ns">
 
     <rule context="fig|fig-group[label or caption[title or p]]|table-wrap|table-wrap-group[label or caption[title or p]]|boxed-text|disp-formula-group[label or caption[title or p]]|chem-struct-wrap[label or caption[title or p]]">
-        <assert test="@id">
+        <assert test="@id" role="warning">
             &lt;<name/>> has no id attribute. 
         </assert>  
     </rule>
