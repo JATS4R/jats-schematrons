@@ -26,7 +26,7 @@
     xmlns:j4r="http://jats4r.org/ns">
     
     <rule context="element-citation[@publication-type='preprint']|mixed-citation[@publication-type='preprint']">
-        <assert test="date-in-citation[@content-type='access-date']">
+        <assert test="date-in-citation[@content-type='access-date']" role="warning">
             &lt;<name/> publication-type="preprint"> doesn't contain an accessed date (&lt;date-in-citation content-type="access-date">).
         </assert>
     </rule>

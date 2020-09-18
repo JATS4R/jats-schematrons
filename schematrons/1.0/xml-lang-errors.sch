@@ -30,7 +30,7 @@
         <let name="object-lang" value="@xml:lang"/>
         <let name="langs" value="doc('lang.xml')"/>
         
-        <assert test="some $lang in $langs//*:lang satisfies $lang/@subtag = $object-lang">
+        <assert test="some $lang in $langs//*:lang satisfies $lang/@subtag = $object-lang" role="error">
             &lt;<name/>> has an xml:lang attribute, whose value (<value-of select="$object-lang"/>) is not one of the IETF RFC 5646 values.
         </assert>
     </rule>

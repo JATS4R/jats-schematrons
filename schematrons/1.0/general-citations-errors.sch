@@ -26,23 +26,23 @@
     xmlns:j4r="http://jats4r.org/ns">
     
     <rule context="element-citation|mixed-citation">
-        <assert test="@publication-type">&lt;<name/>> does not have a publication-type attribute.</assert>
+        <assert test="@publication-type" role="error">&lt;<name/>> does not have a publication-type attribute.</assert>
         
-        <report test="elocation-id and (fpage or lpage or page-range)">
+        <report test="elocation-id and (fpage or lpage or page-range)" role="error">
             Either &lt;elocation-id> or &lt;fpage> (and possibly &lt;lpage>) should be included in a reference. &lt;<name/>> has both &lt;elocation-id> as well as <value-of select="if (fpage and lpage) then 'both &lt;fpage> and &lt;lpage>' else concat('&lt;',*[name()=('fpage','lpage')],'>')"></value-of>
         </report>
         
-        <report test="not(page-range) and lpage and (number(replace(fpage[1],'[^\d\.]','')) gt number(replace(lpage[1],'[^\d\.]','')))">
+        <report test="not(page-range) and lpage and (number(replace(fpage[1],'[^\d\.]','')) gt number(replace(lpage[1],'[^\d\.]','')))" role="error">
             &lt;lpage> must be larger than &lt;fpage>, if present.
         </report>
     </rule>
     
     <rule context="element-citation/year|mixed-citation/year">
-        <report test="not(matches(.,'^[1][0-9][0-9][0-9]$|[2]0[0-2][0-9]$')) and not(matches(@iso-8601-date,'^[1][0-9][0-9][0-9]$|[2]0[0-2][0-9]$'))">&lt;year> which does not contain a 4 digit year must have an iso-8601-date attribute which does contain a 4 digit year.</report>
+        <report test="not(matches(.,'^[1][0-9][0-9][0-9]$|[2]0[0-2][0-9]$')) and not(matches(@iso-8601-date,'^[1][0-9][0-9][0-9]$|[2]0[0-2][0-9]$'))" role="error">&lt;year> which does not contain a 4 digit year must have an iso-8601-date attribute which does contain a 4 digit year.</report>
     </rule>
     
     <rule context="element-citation/pub-id|mixed-citation/pub-id">
-        <assert test="@pub-id-type">&lt;year> which does not contain a 4 digit year must have an iso-8601-date attribute which does contain a 4 digit year.</assert>
+        <assert test="@pub-id-type" role="error">&lt;year> which does not contain a 4 digit year must have an iso-8601-date attribute which does contain a 4 digit year.</assert>
     </rule>
 
 </pattern>

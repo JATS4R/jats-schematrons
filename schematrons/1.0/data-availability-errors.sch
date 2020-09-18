@@ -28,31 +28,31 @@
   
   
   <rule context="sec[@sec-type='data-availability']">
-    <assert test="parent::back">
+    <assert test="parent::back" role="error">
       Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
     </assert>  
   </rule>
   
   <rule context="sec">
-    <report test="j4r:data-avail-type(@sec-type)">
+    <report test="j4r:data-avail-type(@sec-type)" role="error">
       Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
     </report>
   </rule>
   
   <rule context="fn">
-    <report test="@content-type='data-availability' or @fn-type='data-availability' or j4r:data-avail-type(@content-type) or j4r:data-avail-type(@fn-type)">
+    <report test="@content-type='data-availability' or @fn-type='data-availability' or j4r:data-avail-type(@content-type) or j4r:data-avail-type(@fn-type)" role="error">
       Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
     </report>
   </rule>
   
   <rule context="p">
-    <report test="@content-type='data-availability' or j4r:data-avail-type(@content-type)">
+    <report test="@content-type='data-availability' or j4r:data-avail-type(@content-type)" role="error">
       Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
     </report>
   </rule>
   
   <rule context="notes">
-    <report test="@notes-type='data-availability' or j4r:data-avail-type(@notes-type)">
+    <report test="@notes-type='data-availability' or j4r:data-avail-type(@notes-type)" role="error">
       Data Availability Statements shoud be tagged as &lt;sec sec-type="data-availability"> in the &lt;back>.
     </report>
   </rule>

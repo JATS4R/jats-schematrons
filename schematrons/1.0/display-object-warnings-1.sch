@@ -28,19 +28,19 @@
 
 <!-- Need to extend for various other languages -->
     <rule context="fig[(not(label) or label[not(*) and normalize-space(.)='']) and caption]|fig-group[not(label) and caption]">
-        <report test="matches(lower-case(caption[1]),'^\s*fig(ure)?\.?\s*\d|^\s*scheme\.?\s*\d|^\s*supplement(al|ary)?\.?\s*\d|^\s*supplement(al|ary)?\s*fig(ure)?\.?\s*\d')">
+        <report test="matches(lower-case(caption[1]),'^\s*fig(ure)?\.?\s*\d|^\s*scheme\.?\s*\d|^\s*supplement(al|ary)?\.?\s*\d|^\s*supplement(al|ary)?\s*fig(ure)?\.?\s*\d')" role="warning">
             &lt;<name/>> has no non-empty label, but its caption begins with what looks like a label '<value-of select="substring(caption[1],1,10)"/>'. 
         </report>  
     </rule>
     
     <rule context="table-wrap[(not(label) or label[not(*) and normalize-space(.)='']) and caption]|table-wrap-group[not(label) and caption]">
-        <report test="matches(lower-case(caption[1]),'^\s*table\.?\s*\d||^\s*supplement(al|ary)?\s*table\.?\s*\d')">
+        <report test="matches(lower-case(caption[1]),'^\s*table\.?\s*\d||^\s*supplement(al|ary)?\s*table\.?\s*\d')" role="warning">
             &lt;<name/>> has no non-empty label, but its caption begins with what looks like a label '<value-of select="substring(caption[1],1,10)"/>'. 
         </report>  
     </rule>
     
     <rule context="boxed-text[(not(label) or label[not(*) and normalize-space(.)='']) and caption]">
-        <report test="matches(lower-case(caption[1]),'^\s*box\.?\s*\d')">
+        <report test="matches(lower-case(caption[1]),'^\s*box\.?\s*\d')" role="warning">
             &lt;<name/>> has no non-empty label, but its caption begins with what looks like a label '<value-of select="substring(caption[1],1,10)"/>'. 
         </report>  
     </rule>

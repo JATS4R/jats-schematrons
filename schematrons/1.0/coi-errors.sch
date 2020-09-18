@@ -28,32 +28,32 @@
   
   
   <rule context="fn[@fn-type='COI-statement']">
-    <assert test="parent::author-notes">
+    <assert test="parent::author-notes" role="error">
       Conflict of Interest Statements shoud be tagged as &lt;fn fn-type="COI-statement" in the &lt;author-notes>.
     </assert>  
   </rule>
   
   <rule context="fn">
-    <report test="@content-type='COI-statement' or j4r:coi-type(@content-type) or j4r:coi-type(@fn-type)">
+    <report test="@content-type='COI-statement' or j4r:coi-type(@content-type) or j4r:coi-type(@fn-type)" role="error">
       Conflict of Interest Statements shoud be tagged as &lt;fn fn-type="COI-statement" in the &lt;author-notes>.
     </report>
   </rule>
   
   
   <rule context="notes">
-    <report test="@notes-type='COI-statement' or j4r:coi-type(@notes-type)">
+    <report test="@notes-type='COI-statement' or j4r:coi-type(@notes-type)" role="error">
       Conflict of Interest Statements shoud be tagged as &lt;fn fn-type="COI-statement" in the &lt;author-notes>.
     </report>
   </rule>
   
   <rule context="p">
-    <report test="@content-type='COI-statement' or j4r:coi-type(@content-type) or j4r:coi-title(normalize-space(b[1]))">
+    <report test="@content-type='COI-statement' or j4r:coi-type(@content-type) or j4r:coi-title(normalize-space(b[1]))" role="error">
       Conflict of Interest Statements shoud be tagged as &lt;fn fn-type="COI-statement" in the &lt;author-notes>.
     </report>
   </rule>
   
   <rule context="sec">
-    <report test="@sec-type='COI-statement' or j4r:coi-type(@sec-type) or j4r:coi-title(normalize-space(title))">
+    <report test="@sec-type='COI-statement' or j4r:coi-type(@sec-type) or j4r:coi-title(normalize-space(title))" role="error">
       Conflict of Interest Statements shoud be tagged as &lt;fn fn-type="COI-statement" in the &lt;author-notes>.
     </report>
   </rule>

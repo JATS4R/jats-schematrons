@@ -30,11 +30,11 @@
         <let name="registries" value="doc('clinical-trial-registries.xml')"/>
         <let name="source-id" value="@source-id"/>
         
-        <assert test="some $registry in $registries//*:registry satisfies (($registry/@title = $source-id) or ($registry/@other-title = $source-id) or ($registry/@subtitle = $source-id))">
+        <assert test="some $registry in $registries//*:registry satisfies (($registry/@title = $source-id) or ($registry/@other-title = $source-id) or ($registry/@subtitle = $source-id))" role="warning">
             Clinical trial links in &lt;related-object source-id-type="registry-name"> must have a source-id attribute with a value which is one of the WHO-approved registry names. '<value-of select="$source-id"/>' is not one of the WHO-approved registry names.
         </assert>
         
-        <assert test="@source-type='clinical-trials-registry'">
+        <assert test="@source-type='clinical-trials-registry'" role="warning">
             Clinical trial links in &lt;related-object> should have source-type="clinical-trials-registry" attribute.
         </assert>
         
@@ -44,7 +44,7 @@
         <let name="registries" value="doc('clinical-trial-registries.xml')"/>
         <let name="source-id" value="@source-id"/>
         
-        <report test="not(@source-type='clinical-trials-registry') and (some $registry in $registries//*:registry satisfies (($registry/@title = $source-id) or ($registry/@doi = $source-id) or ($registry/@other-title = $source-id) or ($registry/@subtitle = $source-id)))">
+        <report test="not(@source-type='clinical-trials-registry') and (some $registry in $registries//*:registry satisfies (($registry/@title = $source-id) or ($registry/@doi = $source-id) or ($registry/@other-title = $source-id) or ($registry/@subtitle = $source-id)))" role="warning">
             &lt;related-object> clinical trial links should have a source-type="clinical-trials-registry" attribute.
         </report>
         

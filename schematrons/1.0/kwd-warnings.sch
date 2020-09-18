@@ -28,23 +28,23 @@
     <rule context="*[kwd-group]">
     <let name="vanilla-kwd-group-count" value="count(kwd-group[not(@xml:lang) and not(@kwd-group-type)])"/>    
         
-        <assert test="$vanilla-kwd-group-count le 1">There should not be two or more &lt;kwd-group>s without a @kwd-group-type or @xml:lang attribute. <name/> contains <value-of select="$vanilla-kwd-group-count"/>.</assert>
+        <assert test="$vanilla-kwd-group-count le 1" role="warning">There should not be two or more &lt;kwd-group>s without a @kwd-group-type or @xml:lang attribute. <name/> contains <value-of select="$vanilla-kwd-group-count"/>.</assert>
     </rule>
     
     <rule context="kwd-group">  
-        <report test="@xml:lang and (@xml:lang = ancestor::article/@xml:lang)"><name/> has @xml:lang="<value-of select="@xml:lang"/>", which is the same as the @xml:lang value on the article. It is unnecessary.</report>
+        <report test="@xml:lang and (@xml:lang = ancestor::article/@xml:lang)" role="warning"><name/> has @xml:lang="<value-of select="@xml:lang"/>", which is the same as the @xml:lang value on the article. It is unnecessary.</report>
         
         <report test="
             (preceding-sibling::kwd-group or following-sibling::kwd-group)
             and (count(kwd) gt 1)
             and kwd[@content-type]
-            and (count(kwd) != count(kwd[@content-type]))
-            "><name/> has sibling <name/>s, <value-of select="count(kwd)"/> kwds, but only <value-of select="count(kwd[@content-type])"/> kwd(s) with the attribute content-type. under these conditions each kwd should have an attribute content-type.</report>
+            and (count(kwd) != count(kwd[@content-type]))" 
+            role="warning"><name/> has sibling <name/>s, <value-of select="count(kwd)"/> kwds, but only <value-of select="count(kwd[@content-type])"/> kwd(s) with the attribute content-type. under these conditions each kwd should have an attribute content-type.</report>
     </rule>
     
     <rule context="compound-kwd">    
         
-        <report test="count(compound-kwd-part) = 1">There is only one  &lt;<name/>> in &lt;compound-kwd> - <value-of select="."/>.</report>
+        <report test="count(compound-kwd-part) = 1" role="warning">There is only one  &lt;<name/>> in &lt;compound-kwd> - <value-of select="."/>.</report>
     </rule>
     
 </pattern>

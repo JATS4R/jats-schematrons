@@ -29,49 +29,49 @@
     <rule context="fig-group">
         <let name="fig-count" value="count(fig[label[* or normalize-space(.)!=''] or caption[title[* or normalize-space(.)!=''] or p[* or normalize-space(.)!='']]])"/>
         
-        <assert test="$fig-count gt 1">
-            &lt;<name/>> should have more than 1 child &lt;fig> with a label and/or caption. This one has <value-of select="$fig-count"/>.
+        <assert test="$fig-count gt 1" role="error">
+            &lt;<name/>> must have more than 1 child &lt;fig> with a label and/or caption. This one has <value-of select="$fig-count"/>.
         </assert>
         
-        <assert test="label[* or normalize-space(.)!=''] or caption[title[* or normalize-space(.)!=''] or p[* or normalize-space(.)!='']]">
-            &lt;<name/>> should have a &lt;label> and/or a &lt;caption> with a child &lt;title> and/or &lt;p> which is not empty.
+        <assert test="label[* or normalize-space(.)!=''] or caption[title[* or normalize-space(.)!=''] or p[* or normalize-space(.)!='']]" role="error">
+            &lt;<name/>> must have a &lt;label> and/or a &lt;caption> with a child &lt;title> and/or &lt;p> which is not empty.
         </assert>
     </rule>
     
     <rule context="fig">
         
-        <assert test="graphic or alternatives[graphic]">
-            Images in &lt;<name/>> should be captured using &lt;graphic>. This &lt;<name/>> does not have a &lt;graphic>.
+        <assert test="graphic or alternatives[graphic]" role="error">
+            Images in &lt;<name/>> must be captured using &lt;graphic>. This &lt;<name/>> does not have a &lt;graphic>.
         </assert>
     </rule>
     
     <rule context="table-wrap-group">
         <let name="table-count" value="count(table-wrap[label[* or normalize-space(.)!=''] or caption[title[* or normalize-space(.)!=''] or p[* or normalize-space(.)!='']]])"/>
         
-        <assert test="$table-count gt 1">
-            &lt;<name/>> should have more than 1 child &lt;table-wrap> with a label and/or caption. This one has <value-of select="$table-count"/>.
+        <assert test="$table-count gt 1" role="error">
+            &lt;<name/>> must have more than 1 child &lt;table-wrap> with a label and/or caption. This one has <value-of select="$table-count"/>.
         </assert>
         
-        <assert test="label[* or normalize-space(.)!=''] or caption[title[* or normalize-space(.)!=''] or p[* or normalize-space(.)!='']]">
-            &lt;<name/>> should have a &lt;label> and/or a &lt;caption> with a child &lt;title> and/or &lt;p> which is not empty.
+        <assert test="label[* or normalize-space(.)!=''] or caption[title[* or normalize-space(.)!=''] or p[* or normalize-space(.)!='']]" role="error">
+            &lt;<name/>> must have a &lt;label> and/or a &lt;caption> with a child &lt;title> and/or &lt;p> which is not empty.
         </assert>
     </rule>
     
     <rule context="disp-formula-group">
         <let name="formula-count" value="count(disp-formula)"/>
         
-        <assert test="$formula-count gt 1">
-            &lt;<name/>> should have more than 1 child &lt;disp-formula>. This one has <value-of select="$formula-count"/>.
+        <assert test="$formula-count gt 1" role="error">
+            &lt;<name/>> must have more than 1 child &lt;disp-formula>. This one has <value-of select="$formula-count"/>.
         </assert>
         
-        <assert test="label[* or normalize-space(.)!=''] or caption[title[* or normalize-space(.)!=''] or p[* or normalize-space(.)!='']]">
-            &lt;<name/>> should have a &lt;label> and/or a &lt;caption> with a child &lt;title> and/or &lt;p> which is not empty.
+        <assert test="label[* or normalize-space(.)!=''] or caption[title[* or normalize-space(.)!=''] or p[* or normalize-space(.)!='']]" role="error">
+            &lt;<name/>> must have a &lt;label> and/or a &lt;caption> with a child &lt;title> and/or &lt;p> which is not empty.
         </assert>
     </rule>
     
     <rule context="object-id[@pub-id-type='doi' and parent::*/local-name()=('fig','fig-group','table-wrap','table-wrap-group','disp-formula','disp-formula-group','boxed-text')]">
         
-        <assert test="matches(.,'10\.\d{4,9}/[-._;()/:A-Za-z0-9]+$')">
+        <assert test="matches(.,'10\.\d{4,9}/[-._;()/:A-Za-z0-9]+$')" role="error">
             &lt;<name/> pub-id-type="doi"> must contain a valid doi. '<value-of select="."/>' is not a valid doi.
         </assert>
     </rule>

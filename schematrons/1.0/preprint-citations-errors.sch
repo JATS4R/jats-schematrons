@@ -26,45 +26,45 @@
     xmlns:j4r="http://jats4r.org/ns">
     
     <rule context="element-citation[@publication-type='preprint']|mixed-citation[@publication-type='preprint']">
-        <assert test="person-group">
+        <assert test="person-group" role="error">
             &lt;<name/> publication-type="preprint"> must include a &lt;person-group>.
         </assert>
         
-        <assert test="article-title">
+        <assert test="article-title" role="error">
             &lt;<name/> publication-type="preprint"> must include an &lt;article-title>.
         </assert>
         
-        <assert test="year or date[@date-type='published']">
+        <assert test="year or date[@date-type='published']" role="error">
             &lt;<name/> publication-type="preprint"> must include either a &lt;year> or a &lt;date>.
         </assert>
         
-        <report test="year and date[@date-type='published']">
-            &lt;<name/> publication-type="preprint"> should not include both a &lt;year> and a &lt;date>.
+        <report test="year and date[@date-type='published']" role="error">
+            &lt;<name/> publication-type="preprint"> must not include both a &lt;year> and a &lt;date>.
         </report>
         
-        <assert test="source">
+        <assert test="source" role="error">
             &lt;<name/> publication-type="preprint"> must include a &lt;source>.
         </assert>
         
-        <assert test="ext-link or pub-id">
+        <assert test="ext-link or pub-id" role="error">
             &lt;<name/> publication-type="preprint"> must include either an &lt;ext-link> or a &lt;pub-id>.
         </assert>
     </rule>
     
     <rule context="element-citation[@publication-type='preprint']/person-group|mixed-citation[@publication-type='preprint']/person-group">
-        <assert test="@person-group-type">
+        <assert test="@person-group-type" role="error">
             &lt;person-group> in &lt;<value-of select="parent::*/local-name()"/> publication-type="preprint"> must have the attribute person-group-type.
         </assert>
     </rule>
     
     <rule context="element-citation[@publication-type='preprint']/year|mixed-citation[@publication-type='preprint']/year">
-        <report test="matches(.,'[^\d]') and not(matches(@iso-8601-date,'^\d{4}$'))">
+        <report test="matches(.,'[^\d]') and not(matches(@iso-8601-date,'^\d{4}$'))" role="error">
             &lt;year> which is a direct child of &lt;<value-of select="parent::*/local-name()"/> publication-type="preprint"> must either be integer or have an @iso-8601-date with an iso-8601 date. <value-of select="if (@iso-8601-date and matches(.,'[^\d]')) then (concat('The @iso-8601-date, ',@iso-8601-date,' is not in the format 0000.')) else if (not(@iso-8601-date) and matches(.,'[^\d]')) then ('There is no @iso-8601-date and the &lt;year> element is not an integer.') else ()"/>
         </report>
     </rule>
     
     <rule context="element-citation[@publication-type='preprint']/date|mixed-citation[@publication-type='preprint']/date">
-        <report test="matches(year[1],'[^\d]') and not(matches(@iso-8601-date,'^\d{4}$|^\d{4}-\d{2}$|^\d{4}-\d{2}-\d{2}$'))">
+        <report test="matches(year[1],'[^\d]') and not(matches(@iso-8601-date,'^\d{4}$|^\d{4}-\d{2}$|^\d{4}-\d{2}-\d{2}$'))" role="error">
             &lt;date> in &lt;<value-of select="parent::*/local-name()"/> publication-type="preprint"> must either  have an @iso-8601-date with an iso-8601 date, or contain a &lt;year> whose contents are an integer. <value-of select="if (@iso-8601-date and matches(year[1],'[^\d]')) then (concat('The @iso-8601-date, ',@iso-8601-date,' is not in one of the formats 0000, 0000-00, or 0000-00-00.')) else if (not(@iso-8601-date) and matches(.,'[^\d]')) then concat('There is no @iso-8601-date and the &lt;year> element is not an integer. &lt;year>',child::year[1],'&lt;/year>') else ()"/>
         </report>
     </rule>
