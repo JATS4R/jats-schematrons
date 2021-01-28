@@ -48,6 +48,7 @@
     <active pattern="general-citations-errors"/>
     <active pattern="general-citations-warnings"/>
     <active pattern="math-errors"/>
+    <active pattern="peer-review-errors"/>
     <active pattern="permissions-errors"/>
     <active pattern="preprint-citations-errors"/>
     <active pattern="xml-lang-errors"/>
@@ -64,6 +65,7 @@
     <active pattern="ethics-warnings"/>
     <active pattern="kwd-warnings"/>
     <active pattern="math-warnings"/>
+    <active pattern="peer-review-warnings"/>
     <active pattern="permissions-warnings"/>
     <active pattern="preprint-citations-warnings"/>
     <active pattern="subj-warnings"/>
@@ -104,6 +106,9 @@
   
   <include href="math-errors.sch"/>
   <include href="math-warnings.sch"/>
+  
+  <include href="peer-review-errors.sch"/>
+  <include href="peer-review-warnings.sch"/>
   
   <include href="permissions-errors.sch"/>
   <include href="permissions-warnings.sch"/>
@@ -182,7 +187,9 @@
       $type='Data accessibility'"/>
   </xsl:function>
   
-  
-  
+  <!-- global variables for peer review tests -->
+  <let name="types-with-related-object" value="('reviewer-report', 'editor-report', 'author-comment')"/>
+  <let name="peer-review-types" value="($types-with-related-object, 'community-comment', 'aggregated-review-documents')"/>
+  <let name="unallowed-type-regex" value="string-join(for $value in $peer-review-types return concat('^',replace($value,'-','[\\s_–—\\-]?'),'$'),'|')"/>
   
 </schema>
