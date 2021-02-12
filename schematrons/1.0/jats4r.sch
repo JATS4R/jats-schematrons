@@ -49,6 +49,7 @@
     <active pattern="general-citations-warnings"/>
     <active pattern="math-errors"/>
     <active pattern="peer-review-errors"/>
+    <active pattern="peer-review-errors-2"/>
     <active pattern="permissions-errors"/>
     <active pattern="preprint-citations-errors"/>
     <active pattern="xml-lang-errors"/>
@@ -108,6 +109,7 @@
   <include href="math-warnings.sch"/>
   
   <include href="peer-review-errors.sch"/>
+  <include href="peer-review-errors-2.sch"/>
   <include href="peer-review-warnings.sch"/>
   
   <include href="permissions-errors.sch"/>
@@ -190,6 +192,7 @@
   <!-- global variables for peer review tests -->
   <let name="types-with-related-object" value="('reviewer-report', 'editor-report', 'author-comment')"/>
   <let name="peer-review-types" value="($types-with-related-object, 'community-comment', 'aggregated-review-documents')"/>
+  <let name="peer-review-document-types" value="('peer-reviewed-article', 'reviewer-report', 'editor-report', 'author-comment', 'community-comment', 'aggregated-review-documents', 'peer-review-report')"/>
   <let name="unallowed-type-regex" value="string-join(for $value in $peer-review-types return concat('^',replace($value,'-','[\\s_–—\\-]?'),'$'),'|')"/>
   
 </schema>
