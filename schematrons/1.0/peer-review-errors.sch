@@ -35,7 +35,7 @@
     
     <rule context="article[@article-type=$peer-review-types]//article-meta | sub-article[@article-type=$peer-review-types]/front-stub">
         <assert test="article-id[@pub-id-type='doi']" role="error">
-            &lt;article-id pub-id-type="doi"> must be present.
+            &lt;article-id pub-id-type="doi"> must be present in <name/>.
         </assert>
         
         <assert test="contrib-group/contrib" role="error">
@@ -61,6 +61,68 @@
         
         <assert test="role[@specific-use=$contrib-roles]" role="error">
             &lt;contrib> for peer review material must have a child &lt;role>, which has a specific-use attribute with one of the following values: 'reviewer', 'reader', 'author', or 'editor'.
+        </assert>
+        
+    </rule>
+    
+    <rule context="article[@article-type=$types-with-related-object]//article-meta/related-object[@document-type=$peer-review-document-types]|
+        sub-article[@article-type=$types-with-related-object]/front-stub/related-object[@document-type=$peer-review-document-types]">
+        
+        <assert test="@document-id-type='doi'" role="error">
+            &lt;related-object> with the document-type '<value-of select="@document-type"/>' must have a document-id-type attribute with the value 'doi'.
+        </assert>
+        
+    </rule>
+    
+    <rule context="article[@article-type=$peer-review-types]//article-meta/pub-history/event | 
+        sub-article[@article-type=$peer-review-types]/front-stub/pub-history/event">
+        
+        <assert test="count(date) = 1" role="error">
+            &lt;event> must contain one and only one &lt;date>. This one has <value-of select="count(date)"/>.
+        </assert>
+        
+        <assert test="@event-type" role="error">
+            &lt;event> must contain and event-type attribute. The suggested values for this attribute are: reviewer-report-received, author-comment-received, or editor-decision-sent.
+        </assert>
+        
+    </rule>
+    
+    <rule context="article[@article-type=$peer-review-types]//article-meta//custom-meta[meta-name='peer-review-stage'] | sub-article[@article-type=$peer-review-types]/front-stub//custom-meta[meta-name='peer-review-stage']">
+        
+        <assert test="meta-value = ('pre-publication','post-publication')" role="error">
+            A &lt;custom-meta> with a &lt;meta-name> containing 'peer-review-stage', must have a &lt;meta-value> containing either 'pre-publication', or 'post-publication'. This one has '<value-of select="meta-value"/>'.
+        </assert>
+        
+    </rule>
+    
+    <rule context="article[@article-type=$peer-review-types]//article-meta//custom-meta[meta-name='transfer'] | sub-article[@article-type=$peer-review-types]/front-stub//custom-meta[meta-name='transfer']">
+        
+        <assert test="meta-value = 'yes'" role="error">
+            A &lt;custom-meta> with a &lt;meta-name> containing 'transfer', must have a &lt;meta-value> containing 'yes'. This one has '<value-of select="meta-value"/>'.
+        </assert>
+        
+    </rule>
+    
+    <rule context="article[@article-type=$peer-review-types]//article-meta//custom-meta[meta-name='peer-review-revision-round'] | sub-article[@article-type=$peer-review-types]/front-stub//custom-meta[meta-name='peer-review-revision-round']">
+        
+        <assert test="matches(meta-value,'^\d+$')" role="error">
+            A &lt;custom-meta> with a &lt;meta-name> containing 'peer-review-revision-round', must have a &lt;meta-value> containing a numerical value represented with digits. This one has '<value-of select="meta-value"/>'.
+        </assert>
+        
+    </rule>
+    
+    <rule context="article[@article-type=$peer-review-types]//article-meta//custom-meta[meta-name='peer-review-recommendation'] | sub-article[@article-type=$peer-review-types]/front-stub//custom-meta[meta-name='peer-review-recommendation']">
+        
+        <assert test="meta-value = ('revision', 'major-revision', 'minor-revision', 'reject', 'reject-with-resubmit', 'accept', 'formal-accept', 'accept-in-principle')" role="error">
+            A &lt;custom-meta> with a &lt;meta-name> containing 'peer-review-recommendation', must have a &lt;meta-value> containing one of the following values: 'revision', 'major-revision', 'minor-revision', 'reject', 'reject-with-resubmit', 'accept', 'formal-accept' or 'accept-in-principle'. This one has '<value-of select="meta-value"/>'.
+        </assert>
+        
+    </rule>
+    
+    <rule context="article[@article-type=$peer-review-types]//article-meta//custom-meta[meta-name='peer-review-identity-transparency'] | sub-article[@article-type=$peer-review-types]/front-stub//custom-meta[meta-name='peer-review-identity-transparency']">
+        
+        <assert test="meta-value = ('all-identities-visible', 'single-anonymized', 'double-anonymized', 'triple-anonymized')" role="error">
+            A &lt;custom-meta> with a &lt;meta-name> containing 'peer-review-identity-transparency', must have a &lt;meta-value> containing one of the following values: 'all-identities-visible', 'single-anonymized', 'double-anonymized' or 'triple-anonymized'. This one has '<value-of select="meta-value"/>'.
         </assert>
         
     </rule>
