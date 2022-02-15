@@ -35,6 +35,7 @@
 
 <!-- Set phases for ERRORS and WARNINGS -->
   <phase id="errors">
+    <active pattern="abstract-errors"/>
     <active pattern="auths-aff-errors"/>
     <active pattern="coi-errors"/>
     <active pattern="clinical-trial-errors-1"/>
@@ -56,6 +57,8 @@
   </phase>
   
   <phase id="warnings">
+    <active pattern="abstract-warnings-1"/>
+    <active pattern="abstract-warnings-2"/>
     <active pattern="auths-aff-warnings"/>
     <active pattern="coi-warnings"/>
     <active pattern="clinical-trial-warnings"/>
@@ -73,6 +76,10 @@
   </phase>
   
 <!-- Call in the files that include the tests -->
+  <include href="abstract-errors.sch"/>
+  <include href="abstract-warnings-1.sch"/>
+  <include href="abstract-warnings-2.sch"/>
+  
   <include href="auths-affs-errors.sch"/>
   <include href="auths-affs-warnings.sch"/>
   
