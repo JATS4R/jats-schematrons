@@ -27,8 +27,8 @@
 
   <rule context="license">
     <let name="jurisdictions" value="'(am|at|au|az|br|ca|ch|cl|cn|cr|cz|de|ec|ee|eg|es|fr|ge|gr|gt|hk|hr|ie|igo|it|lu|nl|no|nz|ph|pl|pr|pt|ro|rs|sg|th|tw|ug|us|ve|vn|za)'"/>
-    <let name="p1" value="'https://creativecommons\.org/licenses/by(-sa|-nd|-nc|nc-sa|nc-nd)?/4\.0/'"/>
-    <let name="p2" value="concat('https://creativecommons\.org/licenses/by(-sa|-nd|-nc|nc-sa|nc-nd)?/(1|2|3)\.\d(/', $jurisdictions, ')?/')"/>
+    <let name="p1" value="'https://creativecommons\.org/licenses/by(-sa|-nd|-nc|-nc-sa|-nc-nd)?/4\.0/'"/>
+    <let name="p2" value="concat('https://creativecommons\.org/licenses/by(-sa|-nd|-nc|-nc-sa|-nc-nd)?/(1|2|3)\.\d(/', $jurisdictions, ')?/')"/>
     <let name="p3" value="'https://creativecommons\.org/publicdomain/(zero|mark)/1\.0/'"/>
     <let name="li_check" value="if (child::node()[local-name()='license_ref']) then child::node()[local-name()='license_ref'] else @xlink:href"/>
     
