@@ -58,11 +58,26 @@
   
   <rule context="license">
     <!-- if both @xlink:href and ali:license_ref are used, they must match exactly -->
-    <report test="@xlink:href and ali:license_ref and
-      string(@xlink:href) != string(ali:license_ref)" role="error">
+    <report test="@xlink:href and child::node()[local-name()='license_ref'] and
+      string(@xlink:href) != string(child::node()[local-name()='license_ref'])" role="error">
       If both @xlink:href and &lt;ali:license_ref> are used to specify the licence
       URI of an article, their contents must match exactly.
     </report>
+    <report test="count(child::node()[local-name()='license_ref']) > 1 and child::node()[local-name()='license_ref'][not(@start_date)]" role="error">
+      If multiple &lt;ali:license_ref&gt; elements are tagged they must have @start_date to indicate when each license is applicable.
+    </report>
+  </rule>
+  
+  <rule context="child::node()[local-name()='free_to_read']">
+    <report test="@start_date and @end_date and @start_date gt @end_date" role="error">
+      @end_date must be later than @start_date on &lt;ali:free_to_read&gt;.
+    </report>
+  </rule>
+  
+  <rule context="@start_date|@end_date">
+    <assert test="(matches(., '^\d{4}-\d{2}-\d{2}$') and (. castable as xs:date))" role="error">
+      @<value-of select="name(.)"/> must contain valid dates in ISO-8601 YYYY-MM-DD format.
+    </assert>
   </rule>
   
 </pattern>
