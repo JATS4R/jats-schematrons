@@ -26,6 +26,15 @@
          xmlns:j4r="http://jats4r.org/ns">
 
   <rule context="license">
+    <let name="jurisdictions" value="'(am|at|au|az|br|ca|ch|cl|cn|cr|cz|de|ec|ee|eg|es|fr|ge|gr|gt|hk|hr|ie|igo|it|lu|nl|no|nz|ph|pl|pr|pt|ro|rs|sg|th|tw|ug|us|ve|vn|za)'"/>
+    <let name="p1" value="'https://creativecommons\.org/licenses/by(-sa|-nd|-nc|-nc-sa|-nc-nd)?/4\.0/'"/>
+    <let name="p2" value="concat('https://creativecommons\.org/licenses/by(-sa|-nd|-nc|-nc-sa|-nc-nd)?/(1|2|3)\.\d(/', $jurisdictions, ')?/')"/>
+    <let name="p3" value="'https://creativecommons\.org/publicdomain/(zero|mark)/1\.0/'"/>
+    <let name="li_check" value="if (child::node()[local-name()='license_ref']) then child::node()[local-name()='license_ref'] else @xlink:href"/>
+    
+    <report test="contains($li_check, 'creativecommons.org') and not(matches($li_check, $p1) or matches($li_check, $p2) or matches($li_check, $p3))" role="warning">
+      Creative Commons licenses should follow the recommended patterns. <value-of select="$li_check"/> is not a best practices pattern for a Creative Commons URL. Check that it uses https and a trailing slash.
+    </report>
 
     <!-- If license/@xlink:href exists, it must not be empty -->
     <report test="@xlink:href and normalize-space(@xlink:href) = ''" role="warning"> 
@@ -66,7 +75,19 @@
     </report>
 
   </rule>
-
-
+  
+  <rule context="license-p">
+    <let name="li_check" value="if (parent::license/child::node()[local-name()='license_ref']) then parent::license/child::node()[local-name()='license_ref'] else parent::license/@xlink:href"/>
+    <report test="ext-link and ext-link/@xlink:href != $li_check" role="warning">URI in license-p (<value-of select="ext-link/@xlink:href"/>) does not match canonical license URI (<value-of select="$li_check"/>).</report>
+  </rule>
+  
+  <rule context="copyright-statement">
+    <report test="parent::permissions/copyright-year and not(contains(., parent::permissions/copyright-year))" role="warning">
+      The contents of &lt;copyright-statement&gt; should not conflict with &lt;copyright-year&gt;.
+    </report>
+    <report test="parent::permissions/copyright-holder and not(contains(lower-case(.), lower-case(parent::permissions/copyright-holder)))" role="warning">
+      The contents of &lt;copyright-statement&gt; should not conflict with &lt;copyright-holder&gt;.
+    </report>
+  </rule>
 
 </pattern>
