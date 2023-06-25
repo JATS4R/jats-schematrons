@@ -31,9 +31,9 @@
             &lt;<value-of select="name()"/>> does not have the attribute abstract-type="graphical" but it has a descendant &lt;fig> with a graphic. 
         </report>
         
-        <assert test="normalize-space(@abstract-type)=$recommended-values" role="warning"> 
+        <report test="@abstract-type and not(normalize-space(@abstract-type)=$recommended-values)" role="warning"> 
             abstract-type attribute value (<value-of select="@abstract-type"/>) on &lt;<value-of select="name()"/>> is not one of the recommended values (<value-of select="string-join($recommended-values,'; ')"/>). 
-        </assert>
+        </report>
     </rule>
     
 </pattern>
