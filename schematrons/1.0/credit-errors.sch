@@ -31,8 +31,8 @@
         <let name="vocab-term-id" value="lower-case(@vocab-term-identifier)"/>
         <let name="credit-role" value="$credit-roles//*:item[(@term = $vocab-term) or (@uri = $vocab-term-id)]"/>
         
-        <assert test="@vocab-identifier='http://credit.niso.org/'" role="error">
-            A CRediT taxonomy role must have a @vocab-identifier whose value is http://credit.niso.org/.
+        <assert test="@vocab-identifier='https://credit.niso.org/'" role="error">
+            A CRediT taxonomy role must have a @vocab-identifier whose value is https://credit.niso.org/.
         </assert>
         
         <report test="not(@vocab-term-identifier) or ((count($credit-role) = 1) and ($vocab-term-id != $credit-role/@uri))" role="error">
