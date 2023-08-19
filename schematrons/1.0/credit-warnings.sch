@@ -32,7 +32,7 @@
         <let name="normalized-text" value="replace(replace(lower-case(.),'[—–-]','–'),'\s','')"/>
         
         <report test="some $item in $credit-roles//*:item satisfies $item/@normalized-term = $normalized-text" role="warning">
-            A CRediT taxonomy role should have the attributes vocab="credit" and vocab-identifier="http://credit.niso.org/", as well as the following attributes which correspond to a specific CRediT taxonomy term: vocab-term (whose value should possibly be '<value-of select="$credit-roles//*:item[@normalized-term = $normalized-text]/@term"/>'), and vocab-term-identifier (whose value should possibly be '<value-of select="$credit-roles//*:item[@normalized-term = $normalized-text]/@uri"/>').
+            A CRediT taxonomy role should have the attributes vocab="credit" and vocab-identifier="https://credit.niso.org/", as well as the following attributes which correspond to a specific CRediT taxonomy term: vocab-term (whose value should possibly be '<value-of select="$credit-roles//*:item[@normalized-term = $normalized-text]/@term"/>'), and vocab-term-identifier (whose value should possibly be '<value-of select="$credit-roles//*:item[@normalized-term = $normalized-text]/@uri"/>').
         </report>
     </rule>
     
