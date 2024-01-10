@@ -56,15 +56,6 @@
       &lt;contrib-id> must have a @contrib-id-type.
     </assert>
   </rule>
-  
-  <rule context="aff//country">
-    <let name="countries" value="document('countries.xml')"/>
-    <let name="country" value="@country"/>
-    
-    <assert test="@country and (some $code in $countries//*:country satisfies $code/@country = $country)" role="error">
-      &lt;country> must have a @country that includes the ISO 3166-1 2-letter country code.
-    </assert>
-  </rule>
 
 </pattern>
 
