@@ -47,7 +47,7 @@
   
   <rule context="institution-id">
     <assert test="@institution-id-type" role="error">
-      &lt;institution-id> must have an @institutiion-id-type.
+      &lt;institution-id> must have an @institution-id-type.
     </assert>
   </rule>
   
