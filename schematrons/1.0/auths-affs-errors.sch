@@ -47,22 +47,13 @@
   
   <rule context="institution-id">
     <assert test="@institution-id-type" role="error">
-      &lt;institution-id> must have an @institutiion-id-type.
+      &lt;institution-id> must have an @institution-id-type.
     </assert>
   </rule>
   
   <rule context="contrib-id">
     <assert test="@contrib-id-type" role="error">
       &lt;contrib-id> must have a @contrib-id-type.
-    </assert>
-  </rule>
-  
-  <rule context="aff//country">
-    <let name="countries" value="document('countries.xml')"/>
-    <let name="country" value="@country"/>
-    
-    <assert test="@country and (some $code in $countries//*:country satisfies $code/@country = $country)" role="error">
-      &lt;country> must have a @country that includes the ISO 3166-1 2-letter country code.
     </assert>
   </rule>
 
