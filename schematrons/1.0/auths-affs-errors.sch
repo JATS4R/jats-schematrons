@@ -57,6 +57,18 @@
     </assert>
   </rule>
 
+  <rule context="article/front/article-meta">
+    <report test="count(descendant::contrib[@contrib-type='author' and @equal-contrib='yes'])=1" role="error">
+      There is only one author with the attribute @equal-contrib="yes", which cannot be correct.
+    </report>
+  </rule>
+
+  <rule context="contrib[@contrib-type='author']">
+    <report test="ancestor::collab" role="error">
+       &lt;contrib contrib-id-type="author"> should not be a descendant of collab.
+    </report>
+  </rule>
+
 </pattern>
 
 
