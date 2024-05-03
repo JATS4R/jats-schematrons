@@ -32,10 +32,12 @@
   <ns prefix="mml" uri="http://www.w3.org/1998/Math/MathML"/>
   <ns prefix="xsi" uri="http://www.w3.org/2001/XMLSchema-instance"/>
   <ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
+  <ns prefix="oasis" uri="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"/>
 
 <!-- Set phases for ERRORS and WARNINGS -->
   <phase id="errors">
     <active pattern="abstract-errors"/>
+    <active pattern="accessibility-errors"/>
     <active pattern="auths-aff-errors"/>
     <active pattern="coi-errors"/>
     <active pattern="clinical-trial-errors-1"/>
@@ -59,6 +61,7 @@
   <phase id="warnings">
     <active pattern="abstract-warnings-1"/>
     <active pattern="abstract-warnings-2"/>
+    <active pattern="accessibility-warnings"/>
     <active pattern="auths-aff-warnings"/>
     <active pattern="coi-warnings"/>
     <active pattern="clinical-trial-warnings"/>
@@ -79,6 +82,9 @@
   <include href="abstract-errors.sch"/>
   <include href="abstract-warnings-1.sch"/>
   <include href="abstract-warnings-2.sch"/>
+
+  <include href="accessibility-errors.sch"/>
+  <include href="accessibility-warnings.sch"/>
   
   <include href="auths-affs-errors.sch"/>
   <include href="auths-affs-warnings.sch"/>
