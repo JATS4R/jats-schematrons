@@ -60,7 +60,6 @@
     <active pattern="abstract-warnings-1"/>
     <active pattern="abstract-warnings-2"/>
     <active pattern="auths-aff-warnings"/>
-    <active pattern="coi-warnings"/>
     <active pattern="clinical-trial-warnings"/>
     <active pattern="credit-warnings"/>
     <active pattern="data-availability-warnings"/>
@@ -84,7 +83,6 @@
   <include href="auths-affs-warnings.sch"/>
   
   <include href="coi-errors.sch"/>
-  <include href="coi-warnings.sch"/>
   
   <include href="clinical-trial-errors-1.sch"/>
   <include href="clinical-trial-errors-2.sch"/>
