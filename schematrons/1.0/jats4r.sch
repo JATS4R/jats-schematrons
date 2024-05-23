@@ -149,7 +149,7 @@
     <xsl:param name="type"/>
     <xsl:value-of select="
       $type='COI_statement' or
-      $type='coi-statement' or
+      $type='COI-statement' or
       $type='coi_statement' or
       $type='conflict-statement' or
       $type='conflict_statement' or
