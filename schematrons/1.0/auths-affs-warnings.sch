@@ -53,4 +53,16 @@
     </assert>
   </rule>
 
+    <rule context="aff">
+        <assert test="institution" role="info">
+            &lt;aff> does not contain &lt;institution>
+        </assert>
+    </rule>
+    
+    <rule context="collab">
+        <report test="ancestor::article-meta and not(parent::contrib[@contrib-type='author'])" role="warning">
+            &lt;collab> should be a child of &lt;contrib contrib-type="author"> when it is a group author
+        </report>
+    </rule>
+
 </pattern>
