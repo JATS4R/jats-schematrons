@@ -52,8 +52,8 @@
   </rule>
   
   <rule context="contrib-id">
-    <assert test="@contrib-id-type" role="error">
-      &lt;contrib-id> must have a @contrib-id-type.
+    <assert test="normalize-space(@contrib-id-type)!=''" role="error">
+      &lt;contrib-id> must have a @contrib-id-type with a non-empty value.
     </assert>
   </rule>
 
