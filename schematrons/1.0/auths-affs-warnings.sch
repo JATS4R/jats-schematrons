@@ -54,7 +54,7 @@
   </rule>
 
     <rule context="aff">
-        <assert test="institution" role="info">
+        <assert test="institution or institution-wrap/institution" role="info">
             &lt;aff> does not contain &lt;institution>
         </assert>
     </rule>
