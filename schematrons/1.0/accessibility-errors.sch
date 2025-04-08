@@ -88,9 +88,9 @@
     </rule>
 
     <rule context="processing-meta/custom-meta-group[@content-type='accessibility-metadata']/custom-meta">
-        <let name="meta-name-values" value="('accessibilityFeature','accessibilityHazard','accessibilityStatement')"/>
+        <let name="meta-name-values" value="('accessibilityFeature','accessibilityHazard','accessibilitySummary')"/>
         <assert test="meta-name[.=$meta-name-values]" role="error"> 
-           Accessibility Metadata entries must have a &lt;meta-name> value of ‘accessibilityFeature’, ‘accessibilityHazard’, or ‘accessibilityStatement’.
+           Accessibility Metadata entries must have a &lt;meta-name> value of ‘accessibilityFeature’, ‘accessibilityHazard’, or ‘accessibilitySummary’.
         </assert>
 
         <assert test="@vocab='schema.org'" role="error"> 
