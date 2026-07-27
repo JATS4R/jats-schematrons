@@ -24,12 +24,14 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         xmlns:j4r="http://jats4r.org/ns"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         queryBinding="xslt2">
 
 <!-- Define all namespaces and prefixes here -->
   <ns prefix="ali" uri="http://www.niso.org/schemas/ali/1.0"/>
   <ns prefix="j4r" uri="http://jats4r.org/ns"/>
   <ns prefix="mml" uri="http://www.w3.org/1998/Math/MathML"/>
+  <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
   <ns prefix="xsi" uri="http://www.w3.org/2001/XMLSchema-instance"/>
   <ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
   <ns prefix="oasis" uri="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"/>
