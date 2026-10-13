@@ -2,7 +2,7 @@
 <credit-roles>
     <item term="Conceptualization" normalized-term="conceptualization" uri="https://credit.niso.org/contributor-roles/conceptualization/"/>
     <item term="Data curation" normalized-term="datacuration" uri="https://credit.niso.org/contributor-roles/data-curation/"/>
-    <item term="Formal Analysis" normalized-term="formalanalysis" uri="https://credit.niso.org/contributor-roles/formal-analysis/"/>
+    <item term="Formal analysis" normalized-term="formalanalysis" uri="https://credit.niso.org/contributor-roles/formal-analysis/"/>
     <item term="Funding acquisition" normalized-term="fundingacquisition" uri="https://credit.niso.org/contributor-roles/funding-acquisition/"/>
     <item term="Investigation" normalized-term="investigation" uri="https://credit.niso.org/contributor-roles/investigation/"/>
     <item term="Methodology" normalized-term="methodology" uri="https://credit.niso.org/contributor-roles/methodology/"/>
